@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f4f9;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    padding: 1px;
+    text-align: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+nav {
+    width: 20%;
+    background-color: #555;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+nav a {
+    color: white;
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #666;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.content {
+    width: 50%;
+}
+
+.table-container {
+    width: 100%; /* Assurez-vous que le tableau utilise toute la largeur disponible */
+    margin: auto;
+}
+.table-list {
+    width: 100%;
+    font-size: 20px; /* Augmenter légèrement la taille du texte */
+    border-collapse: collapse;
+}
+
+.table-list th, .table-list td {
+    padding: 20px 12px; /* Ajuster le padding pour une meilleure apparence */
+    border: 1px solid #ddd; /* Ajouté des bordures */
+}
+
+.table-list th {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+.table-list tr:nth-child(even) {
+    background-color: #f4f4f9;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+    margin: auto;
+}
+
+button {
+    padding: 10px 20px; /* Ajusté pour un meilleur espacement */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+}
+
+button.btn-back {
+    background-color: #007bff;
+}
+
+/* Bouton personnalisé */
+.btn-unique {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white; /* Couleur du texte blanche */
+    border: none; /* Aucun bord */
+    padding: 10px; /* Padding (espacement intérieur) */
+    text-align: center; /* Texte centré */
+    text-decoration: none; /* Pas de soulignement */
+    display: inline-block; /* Affiche en ligne */
+    font-size: 16px; /* Taille de la police */
+    margin: 4px 2px; /* Espacement extérieur */
+    cursor: pointer; /* Curseur en forme de main */
+    border-radius: 1px; /* Bords arrondis */
+}
+
+.btn-unique:hover {
+    background-color: #45a049; /* Couleur au survol */
+}

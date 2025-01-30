@@ -1,0 +1,162 @@
+/* stylepage.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header, footer {
+    background-color: #e4c0c0;
+    color: black;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-size: 24px; /* Augmenter la taille de la police pour les titres */
+}
+
+form {
+    margin: 30px auto;
+    padding: 20px; /* Augmenter le padding pour plus d'espace */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Augmenter la largeur maximale du formulaire */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 14px; /* Augmenter légèrement la taille de la police pour les étiquettes */
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    padding: 10px; /* Augmenter le padding pour un meilleur espacement */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px; /* Augmenter la taille de la police */
+}
+
+input[type="submit"],
+button {
+    padding: 12px 20px; /* Augmenter le padding pour un meilleur espacement */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Augmenter la taille de la police */
+}
+
+.btn-add {
+    background-color: #21a8c0;
+    color: white;
+    text-align: right;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+button {
+    display: inline-block;
+    margin-top: 10px; /* Ajouter une marge pour espacer les boutons */
+    font-size: 14px;
+    padding: 8px;
+    float: none;
+    top: 140px;
+}
+
+/* Pour la liste de personnes et applications */
+
+.table-list {
+    width: 80%;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px; /* Augmenter légèrement la taille de la police */
+    border-collapse: collapse;
+}
+
+.table-list th, .table-list td {
+    padding: 6px 8px; /* Augmenter le padding pour une meilleure apparence */
+    border: 15px solid #ddd;
+    text-align: left;
+    height: 20px; /* Fixer une hauteur spécifique pour les cellules */
+}
+
+.table-list th {
+    background-color: #4CAF50;
+    color: rgb(230, 214, 214);
+}
+
+.table-list tr:nth-child(even) {
+    background-color: #f4f4f9;
+}
+
+.table
+
+.d-flex {
+    display: flex;
+}
+
+.btn:hover {
+    background-color: #268fd4;
+}
+
+nav {
+    width: 20%;
+    background-color: #555;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+nav a {
+    color: white;
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #666;
+}
+
+.btn .btn-add {
+    background-color: #28a745;
+    display: flex;
+    align-content: left;
+}
+
+
+
+.custom-checkbox:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+}
+
+.collapse .sub-menu .nav-item .nav-link {
+    color: #495057;
+    font-size: 0.875rem;
+    padding-left: 30px;
+}
+
+.collapse .sub-menu .nav-item .nav-link:hover {
+    background-color: #f8f9fa;
+}
+
+.menu-title {
+    margin-right: 10px;
+}
