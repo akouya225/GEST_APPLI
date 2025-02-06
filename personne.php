@@ -86,7 +86,7 @@
         }
         .table .thead-light th {
     color: #fff;
-    background-color: #21a8c0;
+    background-color:  #1e0968;
 }
     </style>
 </head>
@@ -125,10 +125,10 @@
                                 <td>" . htmlspecialchars($personne['telephone']) . "</td>
                                 
                                 <td>
-                                    <a href='listpersonne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn btn-primary btn-sm' title='Ajouter une application developpée par cette personne'><i class='fas fa-plus' ></i></a>
-                                    <a href='details_personne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn btn-pink btn-sm' title='Voir les informations personnelles et des applications'><i class='fas fa-eye'></i></a>
-                                    <a href='modifier_personne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn btn-success btn-sm' title='Modifier les informations'><i class='fas fa-edit'></i></a>
-                               <a href='supprimer_personne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn btn-danger btn-sm' title='Supprimer les informations'><i class='fas fa-trash-alt'></i></a>
+                                    <a href='listpersonne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn  btn-sm' title='Ajouter une application developpée par cette personne'><i class='fas  fa-plus text-primary ' ></i></a>
+                                    <a href='details_personne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn  btn-sm' title='Voir les informations personnelles et des applications'><i class='fas fa-eye'></i></a>
+                                    <a href='modifier_personne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn  btn-sm' title='Modifier les informations'><i class='fas fa-edit text-secondary'></i></a>
+                               <a href='supprimer_personne.php?id=" . htmlspecialchars($personne['id']) . "' class='btn btn-sm' title='Supprimer les informations'><i class='fas fa-trash-alt text-danger'></i></a>
                                </td>
                             </tr>";
                         }
