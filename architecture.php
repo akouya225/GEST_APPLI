@@ -70,6 +70,9 @@ $architectures = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .btn-sm {
             padding: 0.25rem 0.5rem; /* Réduire le padding des boutons */
         }
+        .table .thead-light th {
+    color: #fff;
+    background-color:  #1e0968;}
     </style>
 </head>
 <body>
@@ -100,8 +103,8 @@ $architectures = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>" . htmlspecialchars($architecture['libelle']) . "</td>
                             <td>" . htmlspecialchars($architecture['description']) . "</td>
                             <td class='d-flex justify-content-around'>
-                                <a href='modificationarch.php?id=" . htmlspecialchars($architecture['id']) . "' class='btn btn-primary btn-sm' title='Modifier les informations'><i class='fas fa-edit'></i></a>
-                                <a href='supprimerarch.php?id=" . htmlspecialchars($architecture['id']) . "' class='btn btn-danger btn-sm'  title='Supprimer les informations''><i class='fas fa-trash-alt'></i></a>
+                                <a href='modificationarch.php?id=" . htmlspecialchars($architecture['id']) . "' class='btn  btn-sm text-succes' title='Modifier les informations'><i class='fas fa-edit'></i></a>
+                                <a href='supprimerarch.php?id=" . htmlspecialchars($architecture['id']) . "' class='btn  btn-sm text-danger '    title='Supprimer les informations''><i class='fas fa-trash-alt'></i></a>
                             </td>
                         </tr>";
                     }

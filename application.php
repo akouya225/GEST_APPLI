@@ -177,7 +177,7 @@
         }
         .table .thead-light th {
     color: #fff;
-    background-color: #268fd4;
+    background-color: #1e0968;
 }
     </style>
 </head>
@@ -186,7 +186,7 @@
         <h2>Liste des Applications</h2>
     </header>
     <div class="container mt-4">
-        <button type="submit" class="right btn-secondary" onclick="location.href='application_manager.php'">Ajouter une application</button>
+        <button type="submit" class="right btn-succes" onclick="location.href='application_manager.php'">Ajouter une application</button>
         <div class="table-container">
             
                 <table class="table-list table-striped table-bordered table-sm text-center">

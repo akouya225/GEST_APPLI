@@ -65,11 +65,15 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .table th, .table td {
             padding: 0.5rem; /* Réduire le padding */
             font-size: 0.875rem; /* Réduire la taille de la police */
-            white-space: nowrap; /* Empêcher le texte de passer à la ligne */
-        }
+           white-space: nowrap; /* Empêcher le texte de passer à la ligne */ 
+
+                }
         .btn-sm {
             padding: 0.25rem 0.5rem; /* Réduire le padding des boutons */
-        }
+             }
+        .table .thead-light th {
+                 color: #fff;
+              background-color:  #1e0968;}
     </style>
 </head>
 <body>
@@ -100,8 +104,8 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>" . htmlspecialchars($type['libelle']) . "</td>
                             <td>" . htmlspecialchars($type['description']) . "</td>
                             <td class='d-flex justify-content-around'>
-                                <a href='modification_typersonne.php?id=" . htmlspecialchars($type['id']) . "' class='btn btn-primary btn-sm' title='Modifier les informations'><i class='fas fa-edit'></i></a>
-                                <a href='scriptypers.php?id=" . htmlspecialchars($type['id']) . "' class='btn btn-danger btn-sm'  title='Supprimer les informations'><i class='fas fa-trash-alt'></i></a>
+                                <a href='modification_typersonne.php?id=" . htmlspecialchars($type['id']) . "' class='btn  btn-sm text-succes' title='Modifier les informations'><i class='fas fa-edit'></i></a>
+                                <a href='scriptypers.php?id=" . htmlspecialchars($type['id']) . "' class='btn  btn-sm  text-danger'  title='Supprimer les informations'><i class='fas fa-trash-alt'></i></a>
                             </td>
                         </tr>";
                     }

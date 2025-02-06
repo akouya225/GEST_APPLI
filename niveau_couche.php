@@ -72,6 +72,10 @@ $niveaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .btn-sm {
             padding: 0.25rem 0.5rem; /* Réduire le padding des boutons */
         }
+        .table .thead-light th {
+    color: #fff;
+    background-color:  #1e0968;
+}
     </style>
 </head>
 <body>
@@ -102,8 +106,8 @@ $niveaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>" . htmlspecialchars($niveau['libelle']) . "</td>
                             <td>" . htmlspecialchars($niveau['description']) . "</td>
                             <td class='d-flex justify-content-around'>
-                                <a href='modification_couche.php?id=" . htmlspecialchars($niveau['id']) . "' class='btn btn-primary btn-sm'  title='Modifier les informations'><i class='fas fa-edit'></i></a>
-                                <a href='scripnivcouche.php?id=" . htmlspecialchars($niveau['id']) . "' class='btn btn-danger btn-sm'   title='Supprimer les informations'><i class='fas fa-trash-alt'></i></a>
+                                <a href='modification_couche.php?id=" . htmlspecialchars($niveau['id']) . "' class='btn  btn-sm   text-succes'  title='Modifier les informations'><i class='fas fa-edit'></i></a>
+                                <a href='scripnivcouche.php?id=" . htmlspecialchars($niveau['id']) . "' class='btn  btn-sm   text-danger'   title='Supprimer les informations'><i class='fas fa-trash-alt'></i></a>
                             </td>
                         </tr>";
                     }

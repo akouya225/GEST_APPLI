@@ -17,9 +17,9 @@ if (isset($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);
 
     // Mettre à jour ou supprimer d'abord les lignes dans la table personne
-    $sqlPersonne = "DELETE FROM personne WHERE idpers = :idpers";
+    $sqlPersonne = "DELETE FROM personne WHERE id = :id";
     $stmtPersonne = $mysql->prepare($sqlPersonne);
-    $stmtPersonne->bindParam(':idpers', $id);
+    $stmtPersonne->bindParam(':id', $id);
 
     if ($stmtPersonne->execute()) {
         // Ensuite, supprimer le type de personne
