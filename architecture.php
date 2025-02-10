@@ -61,19 +61,8 @@ $architectures = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Liste des Architectures</title>
     <link rel="stylesheet" href="https://stackpath.microsoft.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        .table th, .table td {
-            padding: 0.5rem; /* Réduire le padding */
-            font-size: 0.875rem; /* Réduire la taille de la police */
-            white-space: nowrap; /* Empêcher le texte de passer à la ligne */
-        }
-        .btn-sm {
-            padding: 0.25rem 0.5rem; /* Réduire le padding des boutons */
-        }
-        .table .thead-light th {
-    color: #fff;
-    background-color:  #1e0968;}
-    </style>
+    <link rel="stylesheet" href="style2.css"> <!-- Lien vers ton fichier CSS -->
+   
 </head>
 <body>
     <div class="container mt-4">

@@ -46,49 +46,9 @@
     <title>Liste des Personnes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        .table th {
-            padding: 0.35rem; /* Réduire le padding */
-            font-size: 1.5rem; /* Réduire la taille de la police */
-            white-space: nowrap; /* Empêcher le texte de passer à la ligne */
-            height: 25px; /* Réduire la hauteur des cellules */
-            border: 1px solid #ddd; /* Ajouter une bordure pour une meilleure lisibilité */
-            background-color: #2980b9; /* Couleur de fond verte */
-            color: white; /* Couleur du texte blanche */
-        }
-
-        .btn-sm {
-            padding: 0.25rem 0.5rem; /* Réduire le padding des boutons */
-        }
-
-        .right {
-            float: right;
-        }
-
-        .btn-unique {
-            background-color: #4CAF50; /* Couleur de fond verte */
-            color: white; /* Couleur du texte blanche */
-            border: none; /* Aucun bord */
-            padding: 10px; /* Padding (espacement intérieur) */
-            text-align: center; /* Texte centré */
-            text-decoration: none; /* Pas de soulignement */
-            display: inline-block; /* Affiche en ligne */
-            font-size: 16px; /* Taille de la police */
-            margin: 4px 2px; /* Espacement extérieur */
-            cursor: pointer; /* Curseur en forme de main */
-            border-radius: 1px; /* Bords arrondis */
-        }
-
-        .btn-unique:hover {
-            background-color: #45a049; /* Couleur au survol */
-        }
-        .table .thead-light th {
-    color: #fff;
-    background-color:  #1e0968;
-}
-    </style>
+    
+    <link rel="stylesheet" href="style2.css"> <!-- Lien vers ton fichier CSS -->
+    
 </head>
 <body>
     <div class="container mt-4">

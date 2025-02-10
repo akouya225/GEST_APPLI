@@ -43,73 +43,7 @@
 
 
 
-<?php
-// Connexion à la base de données
-try {
-    $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
 
-// Vérifier si une mise à jour est demandée
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
-    $id = htmlspecialchars($_POST['id']);
-    $libelle = htmlspecialchars($_POST['libelle']);
-    $description = htmlspecialchars($_POST['description']);
-    
-    // Mettre à jour les données dans la base de données
-    $sql = "UPDATE mode_deploiement SET libelle = :libelle, description = :description WHERE id = :id";
-    $stmt = $mysql->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':libelle', $libelle);
-    $stmt->bindParam(':description', $description);
-    
-    if ($stmt->execute()) {
-        // Rediriger pour actualiser la page avec un message de succès
-        echo "<div class='success-message'>La mise à jour a été effectuée avec succès.
-        <a href='mode_deploiement.php' class='back-button'>Retour à la liste</a></div>";
-        exit();
-    } else {
-        $errorInfo = $stmt->errorInfo();
-        echo "Erreur lors de la mise à jour : " . $errorInfo[2];
-    }
-}
-
-// Vérifier si une suppression est demandée
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
-    $id = htmlspecialchars($_POST['id']);
-    
-    // Supprimer l'enregistrement de la base de données
-    $sql = "DELETE FROM mode_deploiement WHERE id = :id";
-    $stmt = $mysql->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    
-    if ($stmt->execute()) {
-        // Rediriger pour actualiser la page avec un message de succès
-        header("Location: mode_deploiement.php?deleted=true");
-        exit();
-    } else {
-        $errorInfo = $stmt->errorInfo();
-        echo "Erreur lors de la suppression : " . $errorInfo[2];
-    }
-}
-
-// Récupérer les données actuelles pour les afficher dans le formulaire
-if (isset($_GET['id'])) {
-    $id = htmlspecialchars($_GET['id']);
-    $sql = "SELECT * FROM mode_deploiement WHERE id = :id";
-    $stmt = $mysql->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $mode_deploiement = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Vérifiez que les données existent
-    if (!$mode_deploiement) {
-        die("Erreur : Aucune donnée trouvée pour cet ID.");
-    }
-}
-?>
 <?php
 // Activer l'affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
