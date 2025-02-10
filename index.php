@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,13 +43,33 @@
                 <div class="row">
                   <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                     <h3 class="font-weight-bold">Bienvenue à la  DSIB</h3>
+                    Date et L'heure:
+
+                    <span id="clock"></span>
+
+<script>
+function updateClock() {
+    let now = new Date();
+    let dateString = now.toLocaleDateString(); // Format automatique selon la langue du navigateur
+    let timeString = now.toLocaleTimeString(); // Heure locale formatée
+    document.getElementById("clock").textContent = dateString + " " + timeString;
+}
+
+// Mettre à jour l'heure et la date toutes les secondes
+setInterval(updateClock, 1000);
+
+// Appel initial pour éviter l'attente d'une seconde
+updateClock();
+</script>
+
+                            
                     
                   </div>
                   <div class="col-12 col-xl-4">
                     <div class="justify-content-end d-flex">
                       <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
                         <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="mdi mdi-calendar"></i> <span id="currentDate">Today (Jan 2025)</span></button>
+                        <i class="mdi mdi-calendar"></i> <span id="currentDate">Today (Fév 2025)</span></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
                           <a class="dropdown-item" href="#">January - February</a>
                           <a class="dropdown-item" href="#">March - April</a>
@@ -69,7 +90,8 @@
                     <div class="weather-info">
                       <div class="d-flex">
                         <div>
-                        <h2 class="mb-0 font-weight-normal"><i class="icon-sun me-2"></i><span id="temperature">30<sup>°C</sup></span></h2>
+
+                        <h2 class="mb-0 font-weight-normal"><i class="icon-sun me-2"></i></h2>
                         </div>
                         <div class="ms-2">
                           <h4 class="location font-weight-normal">Abidjan</h4>
