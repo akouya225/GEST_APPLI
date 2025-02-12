@@ -14,7 +14,7 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="personne.php">Liste personne</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossierpersonne.php">Liste personne</a></li>
           
         </ul>
       </div>
@@ -27,7 +27,7 @@
       </a>
       <div class="collapse" id="form-elements">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="application.php">Liste des Application</a></li>
+          <li class="nav-item"><a class="nav-link" href="dossierapplication.php">Liste des Application</a></li>
           
         </ul>
       </div>
@@ -43,10 +43,10 @@
       </a>
       <div class="collapse" id="charts">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="architecture.php"> Architectures</a></li>
-          <li class="nav-item"> <a class="nav-link" href="niveau_couche.php"> Niveau_couche</a></li>
-          <li class="nav-item"> <a class="nav-link" href="mode_deploiement.php">Mode_deploiement</a></li>
-          <li class="nav-item"> <a class="nav-link" href="typepersonne.php">Typepersonne</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossierarchitecture.php"> Architectures</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossierniveau.php"> Niveau_couche</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossiermode.php">Mode_deploiement</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossiertypersonne.php">Typepersonne</a></li>
         </ul>
       </div>
     </li>
@@ -59,9 +59,9 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="personneappli.php"> enregistrer des personnes</a></li>
-          <li class="nav-item"> <a class="nav-link" href="voir.php"> Rechercher des personnes</a></li>
-          <li class="nav-item"> <a class="nav-link" href="voirperapp.php"> Affichage des personnes et application</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossierrechecher.php.php"> enregistrer des personnes</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossierrechecher.php"> Rechercher des personnes</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dossierrechecher.php"> Affichage des personnes et application</a></li>
         </ul>
         </div>
     </li>
