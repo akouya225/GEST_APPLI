@@ -136,3 +136,50 @@ header {
     color: #fff;
     background-color:  #1e0968;
 }
+
+/* Style du menu à gauche */
+.menu-left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px; /* Largeur du menu */
+    height: 100vh; /* Hauteur sur toute la page */
+    background-color: #1e0968; /* Couleur de fond */
+    color: white; /* Texte blanc */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+.menu-left .nav {
+    flex-direction: column;
+}
+
+.menu-left .nav-item {
+    margin: 10px 0;
+}
+
+.menu-left .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+}
+
+.menu-left .nav-link:hover {
+    background-color: #2980b9; /* Effet au survol */
+}
+
+/* Ajustement du contenu principal pour éviter qu'il soit caché derrière le menu */
+.container {
+    margin-left: 270px; /* Décale le contenu pour ne pas chevaucher le menu */
+}
+
+/* Style pour la gestion du collapse */
+.collapse {
+    display: none; /* Par défaut caché */
+}
+
+.collapse.show {
+    display: block; /* Affiché lorsqu'il est ouvert */
+}

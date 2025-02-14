@@ -1,118 +1,89 @@
+/* Styles généraux */
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa; /* Couleur de fond douce */
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #f4f4f9;
+    padding: 0;
 }
 
-header, footer {
-    background-color: #333;
-    color: white;
-    padding: 1px;
-    text-align: center;
-    width: 100%;
-}
-
+/* Conteneur principal */
 .container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+    max-width: 1200px; /* Largeur maximale pour le conteneur */
+    margin: auto; /* Centrer le conteneur */
+    padding: 20px; /* Espace interne */
 }
 
-nav {
-    width: 20%;
-    background-color: #555;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+/* En-tête */
+header {
+    background-color: #343a40; /* Couleur sombre pour l'en-tête */
+    color: #fff; /* Texte blanc */
+    padding: 10px 20px; /* Espace interne */
+    text-align: center; /* Centrer le texte */
 }
 
-nav a {
-    color: white;
-    display: block;
-    padding: 10px 0;
-    text-decoration: none;
+/* Titres */
+h1, h2 {
+    color: #343a40; /* Couleur sombre pour les titres */
 }
 
-nav a:hover {
-    background-color: #666;
+/* Boutons */
+.btn {
+    background-color: #007bff; /* Couleur du bouton */
+    color: white; /* Texte blanc */
+    padding: 10px 15px; /* Espace interne du bouton */
+    border: none; /* Supprimer la bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Pointeur de la souris */
+    transition: background-color 0.3s; /* Transition douce */
 }
 
-.main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+.btn:hover {
+    background-color: #0056b3; /* Couleur au survol */
 }
 
-.content {
-    width: 50%;
+/* Tableaux */
+table {
+    width: 100%; /* Tableau plein largeur */
+    border-collapse: collapse; /* Fusionner les bordures */
+    margin: 20px 0; /* Marge autour du tableau */
 }
 
-.table-container {
-    width: 100%; /* Assurez-vous que le tableau utilise toute la largeur disponible */
-    margin: auto;
-}
-.table-list {
-    width: 100%;
-    font-size: 20px; /* Augmenter légèrement la taille du texte */
-    border-collapse: collapse;
+th, td {
+    padding: 10px; /* Espace interne des cellules */
+    text-align: center; /* Centre le texte dans les cellules */
+    border: 1px solid #dee2e6; /* Bordure légère */
 }
 
-.table-list th, .table-list td {
-    padding: 20px 12px; /* Ajuster le padding pour une meilleure apparence */
-    border: 1px solid #ddd; /* Ajouté des bordures */
+thead {
+    background-color: #e9ecef; /* Couleur d'en-tête */
 }
 
-.table-list th {
-    background-color: #333;
-    color: white;
-    font-weight: bold;
+/* Alertes */
+.alert {
+    margin-top: 20px; /* Marge au-dessus des alertes */
 }
 
-.table-list tr:nth-child(even) {
-    background-color: #f4f4f9;
+
+
+
+
+
+/* style.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-.actions {
-    display: flex;
-    justify-content: flex-end;
-    width: 20%;
-    margin: auto;
+.container-scroller {
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
 }
 
-button {
-    padding: 10px 20px; /* Ajusté pour un meilleur espacement */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #28a745;
-    color: white;
-    text-align: center;
+.sidebar {
+ 
+
+.main-panel {
+    margin-left: 250px; /* Laisser de l'espace pour la sidebar */
+    padding: 20px; /* Espacement pour le contenu principal */
 }
 
-button.btn-back {
-    background-color: #007bff;
-}
-
-/* Bouton personnalisé */
-.btn-unique {
-    background-color: #4CAF50; /* Couleur de fond verte */
-    color: white; /* Couleur du texte blanche */
-    border: none; /* Aucun bord */
-    padding: 10px; /* Padding (espacement intérieur) */
-    text-align: center; /* Texte centré */
-    text-decoration: none; /* Pas de soulignement */
-    display: inline-block; /* Affiche en ligne */
-    font-size: 16px; /* Taille de la police */
-    margin: 4px 2px; /* Espacement extérieur */
-    cursor: pointer; /* Curseur en forme de main */
-    border-radius: 1px; /* Bords arrondis */
-}
-
-.btn-unique:hover {
-    background-color: #45a049; /* Couleur au survol */
-}
