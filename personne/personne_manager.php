@@ -1,45 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Akouya Admin</title>
-    
-    <?php include '../css.php'; ?>
-  </head>
-  <body>
-    <div class="container-scroller">
-      <div class="row p-0 m-0 proBanner" id="proBanner">
-        <div class="col-md-12 p-0 m-0">
-          <div class="card-body card-body-padding px-3 d-flex align-items-center justify-content-between">
-            <div>
-              <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
-                <a href="https://www.bootstrapdash.com/product/skydash-admin-template" target="_blank" class="btn me-2 buy-now-btn border-0">Buy Now</a>
-              </div>
-            </div>
-            <div class="d-flex align-items-center justify-content-between">
-              <a href="https://www.bootstrapdash.com/product/skydash-admin-template/"><i class="ti-home me-3 text-white"></i></a>
-              <button id="bannerClose" class="btn border-0 p-0">
-                <i class="ti-close text-white"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- topbar -->
-     
-      <?php include '../topbar.php'; ?>
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-       
-        <?php include '../sidebar.php'; ?>
-        <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-             debut content
+<?php
+          include '../paramettre/hearder.php'; // Inclure l'en-tête
+// Inclure le fichier CSS dans la balise <head>
+echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
+?>
+
            
     <div class="container mt-4">
         <h2>Inscription d'une Personne</h2>
@@ -77,7 +41,8 @@
                     <?php
                     // Connexion à la base de données pour récupérer les types de personne
                     try {
-                        $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
+                        // Inclure le fichier de configuration de la connection
+require_once '../paramettre/bd.php';
                         $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $sql = "SELECT id, libelle FROM type_personne";
                         $stmt = $mysql->query($sql);

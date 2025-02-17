@@ -5,12 +5,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Connexion à la base de données
-try {
-    $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
+// Inclure le fichier de configuration de la connection
+require_once '../paramettre/bd.php';
 
 // Vérifier si un ID d'application est fourni
 if (isset($_GET['id'])) {

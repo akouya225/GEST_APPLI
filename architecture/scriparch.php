@@ -4,12 +4,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
 }
 
-try {
-    $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion !" . $e->getMessage());
-}
+// Connexion à la base de données
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de donnée
 
 $sql = "INSERT INTO Architecture(libelle, description) VALUES (:libelle, :description)";
 $stmt = $mysql->prepare($sql);

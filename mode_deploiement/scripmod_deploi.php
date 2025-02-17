@@ -5,12 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
 }
 
-try {
-    $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion !" . $e->getMessage());
-}
+// Inclure le fichier de configuration de la connection
+require_once '../paramettre/bd.php';
 
 $sql = "INSERT INTO mode_deploiement(id, libelle, description) VALUES (:id, :libelle, :description)";
 $stmt = $mysql->prepare($sql);
