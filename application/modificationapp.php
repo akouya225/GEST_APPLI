@@ -1,22 +1,17 @@
-
 <?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
-          <?php
+include '../paramettre/hearder.php'; // Inclure l'en-tête
+require_once '../paramettre/bd.php'; // Connexion à la base de données
+
+echo '<link rel="stylesheet" href="../css/style.css">'; // Inclure le CSS
+
 // Activer l'affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
-
 // Charger les options disponibles
-$architectures = $mysql->query("SELECT id  FROM architecture")->fetchAll(PDO::FETCH_ASSOC);
-$mode_deploiements = $mysql->query("SELECT id  FROM mode_deploiement")->fetchAll(PDO::FETCH_ASSOC);
+$architectures = $mysql->query("SELECT id FROM architecture")->fetchAll(PDO::FETCH_ASSOC);
+$mode_deploiements = $mysql->query("SELECT id FROM mode_deploiement")->fetchAll(PDO::FETCH_ASSOC);
 $niveau_couches = $mysql->query("SELECT id FROM niveau_couche")->fetchAll(PDO::FETCH_ASSOC);
 
 // Vérifier si une mise à jour est demandée
@@ -26,91 +21,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $description = htmlspecialchars($_POST['description']);
     $statut = htmlspecialchars($_POST['statut']);
     $version = htmlspecialchars($_POST['version']);
-    $idarch = htmlspecialchars($_POST['idarch']); // architecture
-    $idmopl = htmlspecialchars($_POST['idmopl']); // mode_deploiement
-    $idnicou = htmlspecialchars($_POST['idnicou']); // niveau_couche
+    $idarch = htmlspecialchars($_POST['idarch']);
+    $idmopl = htmlspecialchars($_POST['idmopl']);
+    $idnicou = htmlspecialchars($_POST['idnicou']);
 
-    // Vérifier que les valeurs existent dans les tables de référence
-    $checkIdArch = $mysql->prepare("SELECT COUNT(*) FROM architecture WHERE id = :id");
-    $checkIdArch->bindParam(':id', $id);
-    $checkIdArch->execute();
-    if ($checkIdArch->fetchColumn() == 0) {
-        echo" mise à jour    effectuée";
+    // Vérification des clés étrangères
+    $valid = true;
+    foreach (['architecture' => $idarch, 'mode_deploiement' => $idmopl, 'niveau_couche' => $idnicou] as $table => $value) {
+        $check = $mysql->prepare("SELECT COUNT(*) FROM $table WHERE id = :id");
+        $check->bindParam(':id', $value);
+        $check->execute();
+        if ($check->fetchColumn() == 0) {
+            $valid = false;
+            echo "Erreur : ID non valide dans la table $table.";
+        }
     }
 
-    $checkIdMoPl = $mysql->prepare("SELECT COUNT(*) FROM mode_deploiement WHERE id = :id");
-    $checkIdMoPl->bindParam(':id', $id);
-    $checkIdMoPl->execute();
-    if ($checkIdMoPl->fetchColumn() == 0) {
-        echo" mise à jour    effectuée";
-    }
+    if ($valid) {
+        $sql = "UPDATE application SET nom = :nom, description = :description, statut = :statut, version = :version, idarch = :idarch, idmopl = :idmopl, idnicou = :idnicou WHERE id = :id";
+        $stmt = $mysql->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':statut', $statut);
+        $stmt->bindParam(':version', $version);
+        $stmt->bindParam(':idarch', $idarch);
+        $stmt->bindParam(':idmopl', $idmopl);
+        $stmt->bindParam(':idnicou', $idnicou);
 
-    $checkIdNiCou = $mysql->prepare("SELECT COUNT(*) FROM niveau_couche WHERE id = :id");
-    $checkIdNiCou->bindParam(':id', $id);
-    $checkIdNiCou->execute();
-    if ($checkIdNiCou->fetchColumn() == 0) {
-        echo" mise à jour    effectuée";
-    }
-
-    // Mettre à jour les données dans la base de données
-    $sql = "UPDATE application SET nom = :nom, description = :description, statut = :statut, version = :version, id = :id, id = :id, id = :id WHERE id = :id";
-    $stmt = $mysql->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':statut', $statut);
-    $stmt->bindParam(':version', $version);
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':id', $id);
-
-    if ($stmt->execute()) {
-        // Afficher le message de succès avec un bouton retour
-        echo "<div class='success-message'>La mise à jour a été effectuée avec succès.
-         <a href='application.php' class='back-button'>Retour à la liste</a></div>";
-        exit();
-    } else {
-        $errorInfo = $stmt->errorInfo();
-        echo "Erreur lors de la mise à jour : " . $errorInfo[2];
+        if ($stmt->execute()) {
+            echo "<div class='alert alert-success text-center'>Mise à jour réussie. <a href='application.php'>Retour</a></div>";
+        } else {
+            echo "Erreur lors de la mise à jour : " . implode(' ', $stmt->errorInfo());
+        }
     }
 }
 
-// Vérifier si une suppression est demandée
+// Suppression de l'application
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
     $id = htmlspecialchars($_POST['id']);
-
-    // Supprimer l'entrée de la base de données
-    $sql = "DELETE FROM application WHERE id = :id";
-    $stmt = $mysql->prepare($sql);
+    $stmt = $mysql->prepare("DELETE FROM application WHERE id = :id");
     $stmt->bindParam(':id', $id);
-
     if ($stmt->execute()) {
-        // Rediriger pour actualiser la page et afficher le message de succès de suppression
-        header("Location: modificationapp.php?deleted=true");
+        header("Location: application.php?deleted=true");
         exit();
     } else {
-        $errorInfo = $stmt->errorInfo();
-        echo "Erreur lors de la suppression : " . $errorInfo[2];
+        echo "Erreur lors de la suppression : " . implode(' ', $stmt->errorInfo());
     }
 }
 
-// Récupérer les données actuelles pour les afficher dans le formulaire
+// Récupérer les données actuelles
 if (isset($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);
-    $sql = "SELECT * FROM application WHERE id = :id";
-    $stmt = $mysql->prepare($sql);
+    $stmt = $mysql->prepare("SELECT * FROM application WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
     $application = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Vérifiez que les données existent
     if (!$application) {
         die("Erreur : Aucune donnée trouvée pour cet ID.");
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -118,49 +89,30 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier l'Application</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .form-group label {
-            font-size: 0.875rem; /* Réduire la taille de la police */
-        }
-        .form-control {
-            padding: 0.25rem; /* Réduire le padding */
-            font-size: 0.875rem; /* Réduire la taille de la police */
-        }
-        .btn {
-            font-size: 0.875rem; /* Réduire la taille de la police */
-            padding: 0.5rem 1rem; /* Réduire le padding */
-        }
-    </style>
 </head>
 <body>
-    <div class="container mt-5">
-    <body>
-    <div class="container mt-5">
-        <h1 class="mb-4 text-center">Modifier l'Application</h1>
-        <?php if (isset($application)) : ?>
-            <form action="modificationapp.php" method="POST" class="needs-validation" novalidate>
-                <input type="hidden" name="id" value="<?= htmlspecialchars($application['id']) ?>">
-                <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" value="<?= htmlspecialchars($application['nom']) ?>" class="form-control" required>
-                    <div class="invalid-feedback">Veuillez entrer le nom de l'application.</div>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="description" value="<?= htmlspecialchars($application['description']) ?>" class="form-control" required>
-                    <div class="invalid-feedback">Veuillez entrer la description.</div>
-                </div>
-                <div class="form-group">
-                    <label for="statut">Statut</label>
-                    <input type="text" name="statut" id="statut" value="<?= htmlspecialchars($application['statut']) ?>" class="form-control" required>
-                    <div class="invalid-feedback">Veuillez entrer le statut.</div>
-                </div>
-                <div class="form-group">
-                    <label for="version">Version</label>
-                    <input type="text" name="version" id="version" value="<?= htmlspecialchars($application['version']) ?>" class="form-control" required>
-                    <div class="invalid-feedback">Veuillez entrer la version.</div>
-                </div>
-                <div class="form-group">
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Modifier l'Application</h1>
+    <?php if (isset($application)) : ?>
+        <form action="modificationapp.php" method="POST">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($application['id']) ?>">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" id="nom" value="<?= htmlspecialchars($application['nom']) ?>" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" value="<?= htmlspecialchars($application['description']) ?>" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="statut">Statut</label>
+                <input type="text" name="statut" id="statut" value="<?= htmlspecialchars($application['statut']) ?>" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="version">Version</label>
+                <input type="text" name="version" id="version" value="<?= htmlspecialchars($application['version']) ?>" class="form-control" required>
+            </div>
+            <div class="form-group">
                     <label for="idarch">Architecture</label>
                     <select name="idarch" id="idarch" class="form-control" required>
                         <option value="1" <?= $application['idarch'] == 1 ? 'selected' : '' ?>>Monolithique</option>
@@ -186,34 +138,24 @@ if (isset($_GET['id'])) {
                     </select>
                     <div class="invalid-feedback">Veuillez choisir un niveau de couche.</div>
                 </div>
-                <button type="submit" name="update" class="btn btn-success btn-block">Mettre à jour</button>
-                <button type="submit" name="delete" class="btn btn-danger btn-block">Supprimer</button>
-                <a href="application.php" class="btn btn-secondary btn-block">Retour à la liste</a>
-            </form>
-            <?php if (isset($_GET['success']) && $_GET['success'] == 'update') : ?>
-                <p class="text-success mt-3">Mise à jour réussie !</p>
-            <?php endif; ?>
-            <?php if (isset($_GET['deleted']) && $_GET['deleted'] == 'true') : ?>
-                <p class="text-success mt-3">Suppression réussie !</p>
-            <?php endif; ?>
-        <?php else : ?>
-            <p class="text-danger">Aucune donnée trouvée pour cet ID.</p>
-        <?php endif; ?>
-    </div>
+            <button type="submit" name="update" class="btn btn-success btn-block">Mettre à jour</button>
+            <button type="submit" name="delete" class="btn btn-danger btn-block">Supprimer</button>
+            <a href="application.php" class="btn btn-secondary btn-block">Retour</a>
+        </form>
+    <?php else : ?>
+        <p class="text-danger">Aucune donnée trouvée pour cet ID.</p>
+    <?php endif; ?>
+</div>
+<?php include '../footer.php'; ?>
 </body>
-
-
-   <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <?php include '../footer.php'; ?>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <?php include '../js.php'; ?>
-    
-  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
