@@ -17,7 +17,7 @@
             <div>
               <div class="d-flex align-items-center justify-content-between">
                 <p class="mb-0 font-weight-medium me-3 buy-now-text"></p>
-                <a href="https://www.bootstrapdash.com/product/skydash-admin-template" target="_blank" class="btn me-2 buy-now-btn border-0">Buy Now</a>
+                <a href="https://www.bootstrapdash.com/product/skydash-admin-template" target="_blank" class="btn me-2 buy-now-btn border-0">Buy later</a>
               </div>
             </div>
             <div class="d-flex align-items-center justify-content-between">
