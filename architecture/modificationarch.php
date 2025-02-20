@@ -3,12 +3,7 @@
 // Inclure le fichier CSS dans la balise <head>
 echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
 ?>
-
-
-
-
-
-          <?php
+ <?php
 // Connexion à la base de données
 // Connexion à la base de données
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de donnée

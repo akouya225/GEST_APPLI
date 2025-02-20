@@ -1,70 +1,89 @@
 <?php
+include '../paramettre/hearder.php'; // Inclure l'en-tête
+
 // Connexion à la base de données
-// Connexion à la base de données
-require_once '../paramettre/bd.php'; // Inclure la connexion à la base de donnée
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
-// Insérer les données du formulaire dans la table `application`
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nom'])) {
-    $nom = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
-    $description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
-    $statut = isset($_POST['statut']) ? htmlspecialchars($_POST['statut']) : '';
-    $version = isset($_POST['version']) ? htmlspecialchars($_POST['version']) : '';
-    $idarch = isset($_POST['idarch']) ? intval($_POST['idarch']) : '';
-    $idmopl = isset($_POST['idmopl']) ? intval($_POST['idmopl']) : '';
-    $idnicou = isset($_POST['idnicou']) ? intval($_POST['idnicou']) : '';
+// Vérifier si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupérer les données du formulaire
+    $libelle = $_POST['nom'];
+    $description = $_POST['description'];
 
-    // Vérifier que le niveau de couche existe dans la table `niveau_couche`
-    $sql_check = "SELECT COUNT(*) FROM niveau_couche WHERE id = :idnicou";
-    $stmt_check = $mysql->prepare($sql_check);
-    $stmt_check->bindParam(':idnicou', $idnicou);
-    $stmt_check->execute();
-    $count = $stmt_check->fetchColumn();
-
-    
-
-    $sql = "INSERT INTO application (nom, description, statut, version, idarch, idmopl, idnicou) VALUES (:nom, :description, :statut, :version, :idarch, :idmopl, :idnicou)";
+    // Préparer et exécuter la requête d'insertion
+    $sql = "INSERT INTO architecture (libelle, description) VALUES (:libelle, :description)";
     $stmt = $mysql->prepare($sql);
-    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':libelle', $libelle);
     $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':statut', $statut);
-    $stmt->bindParam(':version', $version);
-    $stmt->bindParam(':idarch', $idarch);
-    $stmt->bindParam(':idmopl', $idmopl);
-    $stmt->bindParam(':idnicou', $idnicou);
 
     if ($stmt->execute()) {
-        echo "Application ajoutée avec succès.";
+        // Rediriger vers la liste des architectures avec un message de succès
+        header('Location: architecture.php?success=true'); // Changez 'liste_architecture.php' par le nom de votre fichier de liste
+        exit();
     } else {
-        $errorInfo = $stmt->errorInfo();
-        echo "Erreur lors de l'insertion : " . $errorInfo[2];
+        echo "Erreur lors de l'ajout de l'architecture.";
     }
-}
-
-// Supprimer les données de la table `application`
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
-    $id = htmlspecialchars($_POST['id']);
-    $sql = "DELETE FROM application WHERE id = :id";
-    $stmt = $mysql->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    if ($stmt->execute()) {
-        header("Location: retour.php");
-    } else {
-        $errorInfo = $stmt->errorInfo();
-        echo "Erreur lors de la suppression : " . $errorInfo[2];
-    }
-}
-
-// Récupérer les données de la table `application`
-$sql = "SELECT id, nom, description, statut, version, idarch, idmopl, idnicou FROM application";
-$stmt = $mysql->query($sql);
-$applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-if ($stmt->execute()) {
-    echo "L'enregistrement dans la table application.";
-} else {
-    echo "Erreur lors de l'enregistrement dans la table application.";
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une Architecture</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
 
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .form-group {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Ajouter une Architecture</h2>
+        <?php if (isset($_GET['success']) && $_GET['success'] == 'true') : ?>
+            <div class="alert alert-success" role="alert">
+                L'architecture a été ajoutée avec succès!
+            </div>
+        <?php endif; ?>
+        <form action="ajouterapp.php" method="POST">
+            <div class="form-group">
+                <label for="nom">Libelle</label>
+                <input type="text" id="nom" name="nom" placeholder="Nom de l'architecture" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Description" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Ajouter</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='architecture.php'">retour</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 - Votre Entreprise</p>
+    </footer>
+</body>
+</html>

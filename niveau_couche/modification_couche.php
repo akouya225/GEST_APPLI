@@ -148,14 +148,16 @@ if (isset($_GET['id'])) {
                 </div>
                 <button type="submit" name="update" class="btn btn-success">Mettre à jour</button>
                 <button type="submit" name="delete" class="btn btn-danger">Supprimer</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href='niveau_couche.php'">retour</button>
             </form>
         <?php else : ?>
             <p class="text-danger">Aucune donnée trouvée pour cet ID.</p>
         <?php endif; ?>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <?php include '../footer.php'; ?>
+    <?php include '../js.php'; ?>
+    
 </body>
 </html>
