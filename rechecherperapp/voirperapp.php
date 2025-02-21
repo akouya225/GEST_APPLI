@@ -1,98 +1,13 @@
-<?php
-// Activer l'affichage des erreurs pour le débogage
+
+
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-// Connexion à la base de données
-try {
-    $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
-
-// Traitement des données du formulaire
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nom = htmlspecialchars($_POST['nom']);
-    $prenom = htmlspecialchars($_POST['prenom']);
-    $email = htmlspecialchars($_POST['email']);
-    $telephone = htmlspecialchars($_POST['telephone']);
-    $nom_application = htmlspecialchars($_POST['nom_application']);
-    $architecture = intval($_POST['architecture']);
-    $niveau_couche = intval($_POST['niveau_couche']);
-    $mode_deploiement = intval($_POST['mode_deploiement']);
-
-    // Enregistrer les données dans la base de données
-    try {
-        // Insertion dans la table `personne`
-        $sql = "INSERT INTO personne (nom, prenom, email,telephone) VALUES (:nom, :prenom, :email,:telephone)";
-        $stmt = $mysql->prepare($sql);
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':prenom', $prenom);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':telephone', $telephone);
-        $stmt->execute();
-        $personne_id = $mysql->lastInsertId();
-
-        // Insertion dans la table `application`
-        $sql = "INSERT INTO application (nom, idarch, idnicou, idmopl) VALUES (:nom_application, :architecture, :niveau_couche, :mode_deploiement)";
-        $stmt = $mysql->prepare($sql);
-        $stmt->bindParam(':nom_application', $nom_application);
-        $stmt->bindParam(':architecture', $architecture);
-        $stmt->bindParam(':niveau_couche', $niveau_couche);
-        $stmt->bindParam(':mode_deploiement', $mode_deploiement);
-        $stmt->execute();
-        $application_id = $mysql->lastInsertId();
-
-        // Insertion dans la table `developper`
-        $sql = "INSERT INTO developper (idpers, idapp) VALUES (:personne_id, :application_id)";
-        $stmt = $mysql->prepare($sql);
-        $stmt->bindParam(':personne_id', $personne_id);
-        $stmt->bindParam(':application_id', $application_id);
-        $stmt->execute();
-
-        // Rediriger vers la page de confirmation ou d'affichage
-        header("Location: voirperapp.php?success=true");
-        exit();
-    } catch (PDOException $e) {
-        die("Erreur lors de l'enregistrement : " . $e->getMessage());
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation</title>
-    <link rel="stylesheet" href="https://stackpath.microsoft.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-4">
-        
-        <?php if (isset($_GET['success']) && $_GET['success'] == 'true') : ?>
-            <div class="alert alert-success">L'enregistrement a été effectué avec succès !</div>
-        <?php endif; ?>
-    </div>
-</body>
-</html>
-
-
-
-
-
-
-<?php
-// Connexion à la base de données
-try {
-    $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
-
 // Récupérer les informations des personnes et de leurs applications
 $sql = "
 SELECT 
@@ -120,18 +35,14 @@ JOIN
 
 $stmt = $mysql->query($sql);
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Personnes et Applications</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-4">
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
+         <<div class="container mt-4">
         <h1 class="mb-4">Liste des Personnes et Applications</h1>
         <?php if (count($data) > 0) : ?>
             <table class="table table-striped">
@@ -167,6 +78,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
     </div>
 
-    
-</body>
-</html>
+        <!--FIN DE MON CODE -->
+    </div>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>

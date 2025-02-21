@@ -1,14 +1,12 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
 
-             
-          <?php
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 // Récupérer les données actuelles pour les afficher dans le tableau
 $sql = "SELECT id, libelle, description FROM type_personne";
@@ -16,18 +14,10 @@ $stmt = $mysql->query($sql);
 $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Types de Personne</title>
-    <link rel="stylesheet" href="https://stackpath.microsoft.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="style2.css"> <!-- Lien vers ton fichier CSS -->
-   
-</head>
-<body>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
     <div class="container mt-4">
         <h1 class="mb-4 text-center">La liste des types de personne</h1>
         
@@ -67,19 +57,11 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
    
-            
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <?php include '../footer.php'; ?>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+
+        <!--FIN DE MON CODE -->
     </div>
-    <!-- container-scroller -->
-    <?php include '../js.php'; ?>
-    
-  </body>
-</html>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>
+
+

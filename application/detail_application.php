@@ -1,12 +1,14 @@
-<?php
-// Activer l'affichage des erreurs pour le débogage
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
+
+
 
 // Vérifier si un ID d'application est fourni
 if (isset($_GET['id'])) {
@@ -37,31 +39,9 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails de l'Application</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-        }
-        .container {
-            margin-top: 30px;
-        }
-        .card {
-            margin-bottom: 20px;
-        }
-        .table th, .table td {
-            font-size: 0.875rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
+
+<div class="row">
+<div class="container">
         <h2 class="text-center mb-4">Détails de l'Application</h2>
         <h3 class="text-center mb-4"><?php echo htmlspecialchars($application['nom']); ?></h3>
 
@@ -90,5 +70,11 @@ if (isset($_GET['id'])) {
         </div>
         <a href="application.php" class="btn btn-secondary mt-3">Retour à la Liste des applications</a>
     </div>
-</body>
-</html>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>
+
+
+
+
+

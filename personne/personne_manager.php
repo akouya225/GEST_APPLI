@@ -1,12 +1,20 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
+<
+
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
-           
-    <div class="container mt-4">
-        <h2>Inscription d'une Personne</h2>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
+    <h2>Inscription d'une Personne</h2>
         
         <?php if (!empty($message)) : ?>
             <div class="alert <?= $success ? 'alert-success' : 'alert-danger' ?>" role="alert">
@@ -62,23 +70,8 @@ require_once '../paramettre/bd.php';
         </form>
     </div>
 
-
-
-          fin content
-            
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          
-          <?php include '../footer.php'; ?>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+        <!--FIN DE MON CODE -->
     </div>
-    <!-- container-scroller -->
-    <?php include '../js.php'; ?>
-    
-  </body>
-</html>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>

@@ -1,13 +1,13 @@
-<?php
-include '../paramettre/hearder.php'; // Inclure l'en-tête
-require_once '../paramettre/bd.php'; // Connexion à la base de données
 
-echo '<link rel="stylesheet" href="../css/style.css">'; // Inclure le CSS
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
-// Activer l'affichage des erreurs pour le débogage
+// Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+
 
 // Charger les options disponibles
 $architectures = $mysql->query("SELECT id FROM architecture")->fetchAll(PDO::FETCH_ASSOC);
@@ -81,18 +81,16 @@ if (isset($_GET['id'])) {
         die("Erreur : Aucune donnée trouvée pour cet ID.");
     }
 }
+
+
+
+
+
+
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier l'Application</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container mt-5">
-    <h1 class="mb-4 text-center">Modifier l'Application</h1>
+
+<div class="row">
+<h1 class="mb-4 text-center">Modifier l'Application</h1>
     <?php if (isset($application)) : ?>
         <form action="modificationapp.php" method="POST">
             <input type="hidden" name="id" value="<?= htmlspecialchars($application['id']) ?>">
@@ -146,9 +144,11 @@ if (isset($_GET['id'])) {
         <p class="text-danger">Aucune donnée trouvée pour cet ID.</p>
     <?php endif; ?>
 </div>
-<?php include '../footer.php'; ?>
-</body>
-</html>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>
+
+
 
 
 

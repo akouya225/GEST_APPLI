@@ -1,4 +1,5 @@
 <?php include '../paramettre/entete.php';
+
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
 // Affichage des erreurs pour le débogage
@@ -9,9 +10,7 @@ error_reporting(E_ALL);
 
 <div class="row">
     <div class="col-md-12 grid-margin">
-    <!--DEBUT DE MON CODE -->
-
-         <a href="application_manager.php" class="btn-add">Ajouter une application</a>
+    <a href="application_manager.php" class="btn-add">Ajouter une application</a>
         <div class="table-container">
             <table class="table-list table-striped table-bordered table-sm text-center">
                 <thead class="thead-light">
@@ -69,8 +68,6 @@ error_reporting(E_ALL);
                 </tbody>
             </table>
         </div>
-
-        <!--FIN DE MON CODE -->
     </div>
 </div>
 

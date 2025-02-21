@@ -1,22 +1,18 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
 
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une Personne</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Ajouter une Personne</h2>
+    <h2>Ajouter une Personne</h2>
         <form action="scrippers.php" method="POST">
             <div class="form-group">
                 <label for="nom">Nom</label>
@@ -55,23 +51,16 @@ require_once '../paramettre/bd.php';
             </div>
             <button type="submit" class="btn btn-success btn-sm">Ajouter</button>
             <button type="button" class="btn btn-danger btn-sm" onclick="location.href='personne.php'">Annuler</button>
+            <a href="personne.php" class="btn btn-secondary mt-3">Retour à la Liste des Personnes</a>
         </form>
     </div>
     
-<!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          
-          <?php include '../footer.php'; ?>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+        <!--FIN DE MON CODE -->
     </div>
-    <!-- container-scroller -->
-    
-    <?php include '../js.php'; ?>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>
 
 
-</body>
-</html>
+
+

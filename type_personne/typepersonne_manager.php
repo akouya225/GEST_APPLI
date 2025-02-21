@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Types de Personne</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container mt-4">
-    <div class="d-flex justify-content-end mb-3">
-        
-    </div>
+
+
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
     <h1 class="mb-4">La liste des types de personne</h1>
     <div class="table-responsive">
         <table class="table table-striped table-bordered text-center">
@@ -57,5 +60,8 @@
 </div>
 
 
-</body>
-</html>
+        <!--FIN DE MON CODE -->
+    </div>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>

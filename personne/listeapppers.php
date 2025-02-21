@@ -1,12 +1,13 @@
-<?php
-// Activer l'affichage des erreurs pour le débogage
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
+
 $selected_apps = [];
 $personne_id = 0;
 $personne_nom = '';
@@ -51,18 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['personne_id']) && isse
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applications Sélectionnées</title>
-    <link rel="stylesheet" href="https://stackpath.microsoft.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-4">
-        
-        <?php if (!empty($message)) : ?>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
+    <?php if (!empty($message)) : ?>
             <p><?= htmlspecialchars($message) ?></p>
         <?php endif; ?>
         <h3>Applications sélectionnées :</h3>
@@ -80,8 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['personne_id']) && isse
         <button type="button" class="btn btn-secondary mt-3" onclick="location.href='personne.php'">Retour</button>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.microsoft.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <!--FIN DE MON CODE -->
+    </div>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>

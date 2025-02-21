@@ -43,3 +43,7 @@ if (isset($_GET['id'])) {
     echo "ID non fourni.";
 }
 ?>
+
+
+
+

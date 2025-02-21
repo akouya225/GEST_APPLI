@@ -1,24 +1,20 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
+
+
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
-          <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Applications</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        .table th, .table td { padding: 0.5rem; /* Réduire le padding */ font-size: 0.875rem; /* Réduire la taille de la police */ white-space: nowrap; /* Empêcher le texte de passer à la ligne */ } /* Style pour les cases à cocher */ .form-check-input { width: 20px; /* Taille de la case */ height: 20px; /* Taille de la case */ border-radius: 5px; /* Bord arrondi */ background-color: #ffffff; /* Couleur de fond par défaut */ border: 2px solid #28a745; /* Bordure verte */ } .form-check-input:checked { background-color: #28a745; /* Couleur de fond verte */ border-color: #28a745; /* Bordure verte */ }
-    </style>
-</head>
-<body>
-    <div class="container mt-4">
-        <h2 class="mb-4 text-center">Liste des Applications</h2>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
+    <h2 class="mb-4 text-center">Liste des Applications</h2>
         <form action="listeapppers.php" method="POST">
             <input type="hidden" name="personne_id" value="<?= htmlspecialchars($_GET['id']) ?>">
             <div class="table-responsive">
@@ -60,12 +56,13 @@ require_once '../paramettre/bd.php';
                     </tbody>
                 </table>
                 <button type="submit" name="save" class="btn btn-primary btn-block">Enregistrer Sélection</button>
+                <a href="personne.php" class="btn btn-secondary mt-3">Retour à la Liste des Personnes</a>
             </div>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.microsoft.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <!--FIN DE MON CODE -->
+    </div>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>

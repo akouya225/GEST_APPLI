@@ -1,21 +1,14 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
 
 
 
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
-<?php
-// Activer l'affichage des erreurs pour le débogage
+// Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
 
 // Vérifie si une mise à jour est demandée
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
@@ -78,42 +71,13 @@ if (isset($_GET['id'])) {
     if (!$personne) {
         die("Erreur : Aucune donnée trouvée pour cet ID.");
     }
-}
-?>
+}?>
 
-<<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier le Type de Personne</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .form-group label {
-            font-size: 0.875rem; /* Réduire la taille de la police */
-        }
-        .form-control {
-            padding: 0.25rem; /* Réduire le padding */
-            font-size: 0.875rem; /* Réduire la taille de la police */
-        }
-        .btn {
-            font-size: 0.875rem; /* Réduire la taille de la police */
-            padding: 0.5rem 1rem; /* Réduire le padding */
-        }
-        .container {
-            background-color: #f8f9fa; /* Couleur de fond douce */
-            border-radius: 8px; /* Bords arrondis */
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-        }
-        h1 {
-            font-size: 1.5rem; /* Taille de police du titre */
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4 text-center">Modifier le Type de Personne</h1>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
+    <h1 class="mb-4 text-center">Modifier le Type de Personne</h1>
         <?php if (isset($personne)) : ?>
             <form action="modificationtypepers.php" method="POST" class="needs-validation" novalidate>
                 <input type="hidden" name="id" value="<?= htmlspecialchars($personne['id']) ?>">
@@ -159,8 +123,8 @@ if (isset($_GET['id'])) {
         <?php endif; ?>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <!--FIN DE MON CODE -->
+    </div>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>

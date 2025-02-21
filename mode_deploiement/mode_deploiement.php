@@ -1,36 +1,24 @@
 
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
-
-          <?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
-
-            
-          <?php
-// Connexion à la base de données
-require_once '../paramettre/bd.php';
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Récupérer les données actuelles pour les afficher dans le tableau
 $sql = "SELECT id, libelle, description FROM mode_deploiement";
 $stmt = $mysql->query($sql);
 $modes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des personnes</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="stylepage.css"> <!-- Lien vers ton fichier CSS -->
-</head>
-<body>
-    <div class="container mt-4">
-        <h1 class="mb-4 text-center">La liste des modes de déploiement</h1>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+    <!--DEBUT DE MON CODE -->
+
+    <h1 class="mb-4 text-center">La liste des modes de déploiement</h1>
         
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] == 'true') : ?>
             <div class="alert alert-success" role="alert">
@@ -66,9 +54,6 @@ $modes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </div>
     </div>
-    <?php include '../footer.php'; ?>
-    <?php include '../js.php'; ?>
-    
+</div>
 
-</body>
-</html>
+<?php include '../paramettre/piedpage.php'; ?>

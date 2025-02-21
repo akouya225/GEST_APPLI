@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recherche de Personne</title>
-    <link rel="stylesheet" href="https://stackpath.microsoft.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-4">
-        <h1 class="mb-4">Recherche de Personne</h1>
+
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
+<div class="row">
+<h1 class="mb-4">Recherche de Personne</h1>
         <form action="resultat_rechercher.php" method="GET" class="needs-validation" novalidate>
             <div class="form-group">
                 <label for="nom">Nom</label>
@@ -17,17 +19,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Rechercher</button>
         </form>
-   <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <?php include '../footer.php'; ?>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <?php include '../js.php'; ?>
-    
-  </body>
-</html>
+</div>
+
+<?php include '../paramettre/piedpage.php'; ?>

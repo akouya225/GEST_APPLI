@@ -1,15 +1,13 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
-             
-             <?php
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
 
-// Traitement de l'ajout d'application
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+//Traitement de l'ajout d'application
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = htmlspecialchars($_POST['nom']);
     $description = htmlspecialchars($_POST['description']);
@@ -41,42 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une Application</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-        }
 
-        .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .form-group {
-            max-width: 600px; /* Limite la largeur des colonnes */
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-4">
+<div class="row">
         <h2>Ajouter une Application</h2>
         <?php if (isset($_GET['success']) && $_GET['success'] == 'true') : ?>
             <div class="alert alert-success" role="alert">
@@ -128,13 +92,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="button" class="btn btn-secondary" onclick="location.href='application.php'">retour à la liste</button>
           </form>
     </div>
+</div>
 
-    <!-- partial:partials/_footer.html -->
-    
-        <?php include '../footer.php'; ?>
-    
-    <!-- partial -->
-    <!-- container-scroller -->
-    <?php include '../js.php'; ?>
-</body>
-</html>
+<?php include '../paramettre/piedpage.php'; ?>
+
+
+
+
+
+
+
+
+

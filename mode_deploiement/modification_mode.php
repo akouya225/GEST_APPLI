@@ -1,24 +1,12 @@
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
-
-
-
-
-
-
-<?php
-// Activer l'affichage des erreurs pour le débogage
+// Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
+
 
 // Vérifier si une mise à jour est demandée
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
@@ -89,19 +77,11 @@ if (isset($_GET['id'])) {
         die("Erreur : Aucune donnée trouvée pour cet ID.");
     }
 }
+
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier ou Supprimer un Mode de Déploiement</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-4">
-        <h2>Modifier ou Supprimer un Mode de Déploiement</h2>
+<div class="row">
+<h2>Modifier ou Supprimer un Mode de Déploiement</h2>
         <?php if (isset($_GET['success']) && $_GET['success'] == 'update') : ?>
             <div class="alert alert-success" role="alert">
                 Mise à jour réussie !
@@ -133,9 +113,7 @@ if (isset($_GET['id'])) {
             <p class="text-danger">Aucune donnée trouvée pour cet ID.</p>
         <?php endif; ?>
     </div>
+</div>
 
-    <?php include '../footer.php'; ?>
-    <?php include '../js.php'; ?>
-    
-</body>
-</html>
+<?php include '../paramettre/piedpage.php'; ?>
+

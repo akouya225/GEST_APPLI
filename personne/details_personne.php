@@ -1,12 +1,11 @@
-<?php
-// Activer l'affichage des erreurs pour le débogage
+
+<?php include '../paramettre/entete.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
+// Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-// Connexion à la base de données
-// Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
 // Vérifier si un ID est fourni
 if (isset($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);
@@ -30,34 +29,13 @@ if (isset($_GET['id'])) {
 } else {
     die("ID non fourni.");
 }
+
+
+
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails de la Personne</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-        }
-        .container {
-            margin-top: 30px;
-        }
-        .card {
-            margin-bottom: 20px;
-        }
-        .table th, .table td {
-            font-size: 0.875rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2 class="text-center mb-4">Détails de la Personne</h2>
+<div class="row">
+<h2 class="text-center mb-4">Détails de la Personne</h2>
         <div class="card">
             <div class="card-header bg-primary text-white">
                 Informations Personnelles
@@ -93,9 +71,8 @@ if (isset($_GET['id'])) {
         </div>
         <a href="personne.php" class="btn btn-secondary mt-3">Retour à la Liste des Personnes</a>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php include '../paramettre/piedpage.php'; ?>
+
+
