@@ -1,7 +1,7 @@
 
-<?php include '../paramettre/entete.php';
+<?php include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
-
+ 
 // Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -36,7 +36,7 @@ error_reporting(E_ALL);
                     <?php
                     // Connexion à la base de données pour récupérer les types de personne
                     // Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
+            
 
                     // Récupérer les types de personne
                     $sql = "SELECT id, libelle FROM type_personne";
@@ -59,7 +59,7 @@ require_once '../paramettre/bd.php';
     </div>
 </div>
 
-<?php include '../paramettre/piedpage.php'; ?>
+<?php include '../piedpage.php'; ?>
 
 
 

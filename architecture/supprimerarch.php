@@ -6,7 +6,9 @@ error_reporting(E_ALL);
 
 // Connexion à la base de données
 // Connexion à la base de données
-require_once '../paramettre/bd.php'; // Inclure la connexion à la base de donnée
+ // Inclure la connexion à la base de donnée
+ include '../entete-dossier.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
 // Vérifier si un ID est fourni pour la suppression
 if (isset($_GET['id'])) {

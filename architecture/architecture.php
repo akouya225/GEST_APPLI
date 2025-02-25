@@ -1,6 +1,7 @@
-<?php include '../paramettre/entete.php';
 
+<?php include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+
 
 // Récupérer les données actuelles pour les afficher dans le tableau
 $sql = "SELECT id, libelle, description FROM architecture";
@@ -47,4 +48,4 @@ error_reporting(E_ALL);
     </div>
 </div>
 
-<?php include '../paramettre/piedpage.php'; ?>
+<?php include '../piedpage.php'; ?>

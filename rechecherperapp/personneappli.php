@@ -1,4 +1,6 @@
-
+<?php include '../entete-dossier.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+ ?>
 <div class="row">
     <div class="col-md-12 grid-margin">
     <!--DEBUT DE MON CODE -->
@@ -33,21 +35,7 @@
             <div class="form-group">
                 <label for="architecture">Architecture</label>
                 <select name="architecture" id="architecture" class="form-control" required>
-                    <?php
-                    // Connexion à la base de données pour récupérer les architectures
-                    try {
-                        $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-                        $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                        $sql = "SELECT id, libelle FROM architecture";
-                        $stmt = $mysql->query($sql);
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            echo "<option value=\"" . htmlspecialchars($row['id']) . "\">" . htmlspecialchars($row['libelle']) . "</option>";
-                        }
-                    } catch (PDOException $e) {
-                        die("Erreur de connexion : " . $e->getMessage());
-                    }
-                    ?>
+                    
                 </select>
                 <div class="invalid-feedback">Veuillez choisir une architecture.</div>
             </div>

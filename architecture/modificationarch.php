@@ -1,13 +1,10 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
+
  <?php
 // Connexion à la base de données
 // Connexion à la base de données
-require_once '../paramettre/bd.php'; // Inclure la connexion à la base de donnée
-
+ include '../entete-dossier.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+ 
 // Vérifier si une mise à jour est demandée
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $id = htmlspecialchars($_POST['id']);

@@ -1,9 +1,6 @@
-
-
-
-<?php include '../paramettre/entete.php';
+<?php include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
-
+ 
 // Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -42,7 +39,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="col-md-12 grid-margin">
     <!--DEBUT DE MON CODE -->
 
-         <<div class="container mt-4">
+         <div class="container mt-4">
         <h1 class="mb-4">Liste des Personnes et Applications</h1>
         <?php if (count($data) > 0) : ?>
             <table class="table table-striped">
@@ -82,4 +79,4 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<?php include '../paramettre/piedpage.php'; ?>
+<?php include '../piedpage.php'; ?>

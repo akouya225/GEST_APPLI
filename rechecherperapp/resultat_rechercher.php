@@ -1,12 +1,13 @@
 
-<?php include '../paramettre/entete.php';
+<?php 
 //Affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+ include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
-
+ 
 try{  
 $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); }
     catch (PDOException $e) { die("Erreur de connexion : " . $e->getMessage());
@@ -86,4 +87,4 @@ $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); }
     </div>
 </div>
 
-<?php include '../paramettre/piedpage.php'; ?>
+<?php include '../piedpage.php'; ?>

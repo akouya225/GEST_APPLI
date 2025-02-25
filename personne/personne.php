@@ -2,7 +2,7 @@
 
 
 
-<?php include '../paramettre/entete.php';
+<?php include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
 // Affichage des erreurs pour le débogage
@@ -31,7 +31,6 @@ error_reporting(E_ALL);
                     // Connexion à la base de données
                     try {
                       // Inclure le fichier de configuration  de la connexion
-                           require_once '../paramettre/bd.php';
                         $sql = "SELECT id, nom, prenom, email, telephone FROM personne";
                         $stmt = $mysql->query($sql);
                         $personnes = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,7 +61,7 @@ error_reporting(E_ALL);
     </div>
 </div>
 
-<?php include '../paramettre/piedpage.php'; ?>
+<?php include '../piedpage.php'; ?>
 
 
 

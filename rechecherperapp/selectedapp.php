@@ -3,14 +3,11 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+ include '../entete-dossier.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+ 
 
 // Connexion à la base de données
-try {
-    $mysql = new PDO('mysql:host=localhost;dbname=gest_app', 'root', 'lucia');
-    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
 
 // Charger les options disponibles
 $architectures = $mysql->query("SELECT id  FROM architecture")->fetchAll(PDO::FETCH_ASSOC);

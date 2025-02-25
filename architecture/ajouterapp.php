@@ -1,9 +1,6 @@
-<?php
-include '../paramettre/hearder.php'; // Inclure l'en-tête
-
-// Connexion à la base de données
+<?php include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
-
+ 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire

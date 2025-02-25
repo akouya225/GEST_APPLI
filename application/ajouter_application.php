@@ -1,15 +1,11 @@
-<?php
-          include '../paramettre/hearder.php'; // Inclure l'en-tête
-// Inclure le fichier CSS dans la balise <head>
-echo '<link rel="stylesheet" href="../css/style.css">'; // Assure-toi que ce fichier existe
-?>
 
 
 <?php
 // Connexion à la base de données
 // Inclure le fichier de configuration de la connection
-require_once '../paramettre/bd.php';
-
+include '../entete-dossier.php';
+require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
+ 
 // Traitement de l'ajout d'application
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = htmlspecialchars($_POST['nom']);
