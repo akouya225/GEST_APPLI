@@ -74,7 +74,7 @@ if (isset($_GET['id'])) {
     <div class="col-md-12 grid-margin">
     <!--DEBUT DE MON CODE -->
 
-         <                <h1 class="card-title mb-4 text-center">Modifier le Type de Personne</h1>
+                        <h1 class="card-title mb-4 text-center">Modifier le Type de Personne</h1>
                 <?php if (isset($type_personne)) : ?>
                     <form action="modification_typersonne.php" method="POST" class="needs-validation" novalidate>
                         <input type="hidden" name="id" value="<?= htmlspecialchars($type_personne['id']) ?>">
@@ -90,6 +90,7 @@ if (isset($_GET['id'])) {
                         </div>
                         <button type="submit" name="update" class="btn btn-success btn-block">Mettre à jour</button>
                         <button type="submit" name="delete" class="btn btn-danger btn-block">Supprimer</button>
+                        <a href="typepersonne.php" class="btn btn-secondary mt-3">Retour </a>
                     </form>
                     <?php if (isset($_GET['success']) && $_GET['success'] == 'update') : ?>
                         <p class="text-success mt-3 text-center">Mise à jour réussie !</p>
@@ -103,7 +104,7 @@ if (isset($_GET['id'])) {
             </div>
         </div>
     </div>
-        <!--FIN DE MON CODE -->
+   
     </div>
 </div>
 

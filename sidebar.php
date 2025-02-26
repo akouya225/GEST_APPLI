@@ -46,7 +46,7 @@
           <li class="nav-item"> <a class="nav-link" href="architecture/architecture.php"> Architectures</a></li>
           <li class="nav-item"> <a class="nav-link" href="niveau_couche/niveau_couche.php"> Niveau_couche</a></li>
           <li class="nav-item"> <a class="nav-link" href="mode_deploiement/mode_deploiement.php">Mode_deploiement</a></li>
-          <li class="nav-item"> <a class="nav-link" href="typepersonne/type_personne.php">Typepersonne</a></li>
+          <li class="nav-item"> <a class="nav-link" href="type_personne/typepersonne.php">Type_personne</a></li>
         </ul>
       </div>
     </li>

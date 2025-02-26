@@ -1,4 +1,5 @@
-<?php include '../entete-dossier.php';
+<?php 
+include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
 // Affichage des erreurs pour le débogage
@@ -7,11 +8,63 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
+<style>
+    /* Aligner le bouton à droite */
+    .btn-container {
+        display: flex;
+        justify-content: flex-end; /* Aligner à droite */
+        margin-bottom: 10px;
+    }
+
+    /* Style du bouton */
+    .btn-add {
+        background-color: #007bff; /* Bleu Bootstrap */
+        color: white;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .btn-add:hover {
+        background-color: #0056b3;
+    }
+
+    /* Style du tableau */
+    .table-container {
+        overflow-x: auto; /* Permet le défilement horizontal */
+    }
+
+    .table-list {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table-list th, .table-list td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .table-list th {
+        background-color: #f8f9fa;
+    }
+
+    /* Style des icônes d'action */
+    .action-buttons a {
+        margin: 0 5px;
+        font-size: 16px;
+    }
+</style>
+
 <div class="row">
     <div class="col-md-12 grid-margin">
-    <!--DEBUT DE MON CODE -->
+        
+        <!-- Bouton Ajouter une application -->
+        <div class="btn-container">
+            <a href="application_manager.php" class="btn-add">Ajouter une application</a>
+        </div>
 
-         <a href="application_manager.php" class="btn-add">Ajouter une application</a>
+        <!-- Tableau des applications -->
         <div class="table-container">
             <table class="table-list table-striped table-bordered table-sm text-center">
                 <thead class="thead-light">
@@ -29,9 +82,7 @@ error_reporting(E_ALL);
                 </thead>
                 <tbody>
                     <?php
-                    // Inclure le fichier de configuration de la connexion
-                    
-                    // Récupérer les données avec les libellés des tables associées et éviter les NULL
+                    // Requête pour récupérer les applications avec les libellés associés
                     $sql = "SELECT 
                                 app.id, 
                                 app.nom, 
@@ -59,9 +110,13 @@ error_reporting(E_ALL);
                             <td>" . htmlspecialchars($application['architecture'] ?? 'Non défini') . "</td>
                             <td>" . htmlspecialchars($application['mode_deploiement'] ?? 'Non défini') . "</td>
                             <td>" . htmlspecialchars($application['niveau_couche'] ?? 'Non défini') . "</td>
-                            <td class='d-flex'>
-                                <a href='modificationapp.php?id=" . htmlspecialchars($application['id']) . "' class='btn btn-sm text-primary ' title='Modifier'><i class='fas fa-edit'></i></a>
-                                <a href='detail_application.php?id=" . htmlspecialchars($application['id']) . "' class='btn  btn-sm text-secondary ' title='Voir détails'><i class='fas fa-eye'></i></a>
+                            <td class='action-buttons'>
+                                <a href='modificationapp.php?id=" . htmlspecialchars($application['id']) . "' class='text-primary' title='Modifier'>
+                                    <i class='fas fa-edit'></i>
+                                </a>
+                                <a href='detail_application.php?id=" . htmlspecialchars($application['id']) . "' class='text-secondary' title='Voir détails'>
+                                    <i class='fas fa-eye'></i>
+                                </a>
                             </td>
                         </tr>";
                     }
@@ -70,7 +125,6 @@ error_reporting(E_ALL);
             </table>
         </div>
 
-        <!--FIN DE MON CODE -->
     </div>
 </div>
 
