@@ -1,5 +1,5 @@
-
-<?php include '../entete-dossier.php';
+<?php 
+include '../entete-dossier.php';
 require_once '../paramettre/bd.php'; // Inclure la connexion à la base de données
 
 // Affichage des erreurs pour le débogage
@@ -7,12 +7,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
-
-// Charger les options disponibles
-$architectures = $mysql->query("SELECT id FROM architecture")->fetchAll(PDO::FETCH_ASSOC);
-$mode_deploiements = $mysql->query("SELECT id FROM mode_deploiement")->fetchAll(PDO::FETCH_ASSOC);
-$niveau_couches = $mysql->query("SELECT id FROM niveau_couche")->fetchAll(PDO::FETCH_ASSOC);
+// Charger les options disponibles dynamiquement
+$architectures = $mysql->query("SELECT id, libelle FROM architecture")->fetchAll(PDO::FETCH_ASSOC);
+$mode_deploiements = $mysql->query("SELECT id, libelle FROM mode_deploiement")->fetchAll(PDO::FETCH_ASSOC);
+$niveau_couches = $mysql->query("SELECT id,libelle FROM niveau_couche")->fetchAll(PDO::FETCH_ASSOC);
 
 // Vérifier si une mise à jour est demandée
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
@@ -27,17 +25,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
 
     // Vérification des clés étrangères
     $valid = true;
-    foreach (['architecture' => $idarch, 'mode_deploiement' => $idmopl, 'niveau_couche' => $idnicou] as $table => $value) {
-        $check = $mysql->prepare("SELECT COUNT(*) FROM $table WHERE id = :id");
-        $check->bindParam(':id', $value);
-        $check->execute();
-        if ($check->fetchColumn() == 0) {
+    $errors = [];
+
+    foreach ([
+        'architecture' => $idarch, 
+        'mode_deploiement' => $idmopl, 
+        'niveau_couche' => $idnicou
+    ] as $table => $value) {
+        if ($value <= 0) {
+            $errors[] = "Erreur : ID fourni pour $table est invalide.";
             $valid = false;
-            echo "Erreur : ID non valide dans la table $table.";
+            continue;
+        }
+
+        $query = "SELECT COUNT(*) FROM `$table` WHERE id = :id";
+        $check = $mysql->prepare($query);
+        $check->bindParam(':id', $value, PDO::PARAM_INT);
+        $check->execute();
+
+        if ($check->fetchColumn() == 0) {
+            $errors[] = "Erreur : ID $value non trouvé dans la table $table.";
+            $valid = false;
         }
     }
 
-    if ($valid) {
+    if (!$valid) {
+        foreach ($errors as $error) {
+            echo $error . "<br>";
+        }
+    } else {
         $sql = "UPDATE application SET nom = :nom, description = :description, statut = :statut, version = :version, idarch = :idarch, idmopl = :idmopl, idnicou = :idnicou WHERE id = :id";
         $stmt = $mysql->prepare($sql);
         $stmt->bindParam(':id', $id);
@@ -57,19 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     }
 }
 
-// Suppression de l'application
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
-    $id = htmlspecialchars($_POST['id']);
-    $stmt = $mysql->prepare("DELETE FROM application WHERE id = :id");
-    $stmt->bindParam(':id', $id);
-    if ($stmt->execute()) {
-        header("Location: application.php?deleted=true");
-        exit();
-    } else {
-        echo "Erreur lors de la suppression : " . implode(' ', $stmt->errorInfo());
-    }
-}
-
 // Récupérer les données actuelles
 if (isset($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);
@@ -81,12 +84,6 @@ if (isset($_GET['id'])) {
         die("Erreur : Aucune donnée trouvée pour cet ID.");
     }
 }
-
-
-
-
-
-
 ?>
 
 <div class="row">
@@ -111,51 +108,34 @@ if (isset($_GET['id'])) {
                 <input type="text" name="version" id="version" value="<?= htmlspecialchars($application['version']) ?>" class="form-control" required>
             </div>
             <div class="form-group">
-                    <label for="idarch">Architecture</label>
-                    <select name="idarch" id="idarch" class="form-control" required>
-                        <option value="1" <?= $application['idarch'] == 1 ? 'selected' : '' ?>>Monolithique</option>
-                        <option value="2" <?= $application['idarch'] == 2 ? 'selected' : '' ?>>Microservice</option>
-                    </select>
-                    <div class="invalid-feedback">Veuillez choisir une architecture.</div>
-                </div>
-                <div class="form-group">
-                    <label for="idmopl">Mode de Déploiement</label>
-                    <select name="idmopl" id="idmopl" class="form-control" required>
-                        <option value="1" <?= $application['idmopl'] == 1 ? 'selected' : '' ?>>Serveur</option>
-                        <option value="2" <?= $application['idmopl'] == 2 ? 'selected' : '' ?>>Container</option>
-                        <option value="3" <?= $application['idmopl'] == 3 ? 'selected' : '' ?>>Installable</option>
-                    </select>
-                    <div class="invalid-feedback">Veuillez choisir un mode de déploiement.</div>
-                </div>
-                <div class="form-group">
-                    <label for="idnicou">Niveau de Couche</label>
-                    <select name="idnicou" id="idnicou" class="form-control" required>
-                        <option value="1" <?= $application['idnicou'] == 1 ? 'selected' : '' ?>>Back-End</option>
-                        <option value="2" <?= $application['idnicou'] == 2 ? 'selected' : '' ?>>Full-Stack</option>
-                        <option value="3" <?= $application['idnicou'] == 3 ? 'selected' : '' ?>>Front-End</option>
-                    </select>
-                    <div class="invalid-feedback">Veuillez choisir un niveau de couche.</div>
-                </div>
+                <label for="idarch">Architecture</label>
+                <select name="idarch" id="idarch" class="form-control" required>
+                    <?php foreach ($architectures as $arch): ?>
+                        <option value="<?= $arch['id'] ?>" <?= ($application['idarch'] == $arch['id']) ? 'selected' : '' ?>><?= $arch['libelle'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="idmopl">Mode de Déploiement</label>
+                <select name="idmopl" id="idmopl" class="form-control" required>
+                    <?php foreach ($mode_deploiements as $mode): ?>
+                        <option value="<?= $mode['id'] ?>" <?= ($application['idmopl'] == $mode['id']) ? 'selected' : '' ?>><?= $mode['libelle'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="idnicou">Niveau de Couche</label>
+                <select name="idnicou" id="idnicou" class="form-control" required>
+                    <?php foreach ($niveau_couches as $couche): ?>
+                        <option value="<?= $couche['id'] ?>" <?= ($application['idnicou'] == $couche['id']) ? 'selected' : '' ?>><?= $couche['libelle'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
             <button type="submit" name="update" class="btn btn-success btn-block">Mettre à jour</button>
-            <button type="submit" name="delete" class="btn btn-danger btn-block">Supprimer</button>
             <a href="application.php" class="btn btn-secondary btn-block">Retour</a>
         </form>
     <?php else : ?>
-        <p class="text-danger">Aucune donnée trouvée pour cet ID.</p>
+        
     <?php endif; ?>
 </div>
-</div>
-
 <?php include '../piedpage.php'; ?>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
   
   if ($stmt->execute()) {
       // Rediriger pour actualiser la page avec un message de succès
-      echo "la suppression effectué avec succès : ";
+      echo "la mise à jours effectué avec succès : ";
       exit();
   } else {
       $errorInfo = $stmt->errorInfo();

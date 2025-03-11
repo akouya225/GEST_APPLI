@@ -1,9 +1,7 @@
 <?php 
 
 include 'entete.php';
-
 ?>
-
 <div class="row">
 <div class="col-md-12 grid-margin">
                 <div class="row">
@@ -18,37 +16,15 @@ include 'entete.php';
                        let now = new Date();
                       let dateString = now.toLocaleDateString(); // Format automatique selon la langue du navigateur
                                  let timeString = now.toLocaleTimeString(); // Heure locale formatée
-                              document.getElementById("clock").textContent = dateString + " " + timeString;
-}
+                              document.getElementById("clock").textContent = dateString + " " + timeString;}
 
             // Mettre à jour l'heure et la date toutes les secondes
                 setInterval(updateClock, 1000);
 
                // Appel initial pour éviter l'attente d'une seconde
               updateClock();
-               </script>
-
-                            
-                    
-                  </div>
-                  <div class="col-12 col-xl-4">
-                    <div class="justify-content-end d-flex">
-                      <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                        <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="mdi mdi-calendar"></i> <span id="currentDate">Today (Fév 2025)</span></button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                          <a class="dropdown-item" href="#">January - February</a>
-                          <a class="dropdown-item" href="#">March - April</a>
-                          <a class="dropdown-item" href="#">June - August</a>
-                          <a class="dropdown-item" href="#">August - November</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-</div>
-<div class="row">
+               </script></div>
+             <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card tale-bg">
                   <div class="card-people mt-auto">
@@ -95,8 +71,6 @@ include 'entete.php';
                     <div class="card card-light-blue">
                       <div class="card-body">
                       <button type="submit" class="right btn" onclick="location.href='architecture/architecture.php'"><p class="mb-4-white"><p class="mb-4">PARAMETRES</p></button>
-                        
-                        
                         <p class="fs-30 mb-2">118</p>
 
                       </div>
