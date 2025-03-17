@@ -15,11 +15,12 @@ error_reporting(E_ALL);
         background-color: beige; /* Couleur d'arrière-plan beige */
     }
 
-    .table th, .table td {
-        background-color: wheat;
+     .table td {
+        background-color: gainsboro;
         color: black; /* Texte blanc */
         font-weight: bold;
     }
+
 
     .table tbody tr:hover {
         background-color: #495057 !important; /* Effet survol */

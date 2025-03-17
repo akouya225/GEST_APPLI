@@ -18,7 +18,7 @@ error_reporting(E_ALL);
 
     /* Style du bouton */
     .btn-add {
-        background-color: orchid; /* Bleu Bootstrap */
+        background-color:burlywood; /* Bleu Bootstrap */
         color: white;
         padding: 8px 15px;
         text-decoration: none;
@@ -43,12 +43,13 @@ error_reporting(E_ALL);
     .table-list th, .table-list td {
         padding: 5px;
         border: 1px solid #ddd;
+        background-color: burlywood; 
         
     }
 
     .table-list th {
         
-        background-color: orange;
+        background-color:royalblue;
     }
 
     /* Style des icônes d'action */
