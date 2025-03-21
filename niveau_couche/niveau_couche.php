@@ -13,7 +13,37 @@ $sql = "SELECT id, libelle, description FROM niveau_couche";
 $stmt = $mysql->query($sql);
 $niveaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<style>
+    /* Styles personnalisés */
+    
+    .table {
+        background-color: beige; /* Couleur d'arrière-plan beige */
+    }
 
+    .table th, .table td {
+        font-size: 15px; /* Réduction de la taille du texte */
+    padding: 5px;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    border: 1px solid #ddd;
+    text-align: center;
+    
+    }
+
+.table thead th {
+    background-color: burlywood; /* Marron foncé */
+    color: black; /* Texte blanc pour le contraste */
+}
+
+    .table tbody tr:hover {
+        background-color: #495057 !important; /* Effet survol */
+    }
+
+    .btn i {
+        font-size: 1.2rem; /* Agrandir les icônes */
+    }
+
+    
+</style>
 
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Liste des Niveaux de Couche</h1>

@@ -31,7 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
   
   if ($stmt->execute()) {
       // Rediriger pour actualiser la page avec un message de succès
-      echo "la mise à jours effectué avec succès : ";
+      echo "<div class='success-message'>La mise à jour a été effectuée avec succès.
+              <a href='niveau_couche.php' class='back-button'>Retour à la liste</a>
+             
+              </div>";;
       exit();
   } else {
       $errorInfo = $stmt->errorInfo();

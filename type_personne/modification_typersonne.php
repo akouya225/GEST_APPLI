@@ -64,10 +64,6 @@ if (isset($_GET['id'])) {
     }
 }
 
-
-
-
-
 ?>
 
 <div class="row">

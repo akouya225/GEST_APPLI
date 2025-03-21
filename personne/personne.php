@@ -9,39 +9,63 @@ error_reporting(E_ALL);
 ?>
 
 <style>
-    /* Styles personnalisés */
-    
-    .table {
-        background-color: beige; /* Couleur d'arrière-plan beige */
-    }
+   /* Conteneur du bouton aligné à droite */
+.btn-container {
+    display: flex;
+    justify-content: flex-end; /* Aligner le bouton à droite */
+    margin-bottom: 10px;
+    width: 100%;
+}
 
-     .table td {
-        background-color: gainsboro;
-        color: black; /* Texte blanc */
-        font-weight: bold;
-    }
+/* Style du bouton */
+.btn-add {
+    background-color: bisque; 
+    color: grey;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+/* Style du tableau */
+.table {
+    font-size: 10px; /* Réduction de la taille du texte */
+    background-color: beige;
+    width: 100%; /* Ajuster la largeur */
+}
+
+.table th, .table td {
+    padding: 5px; /* Ajustement de l'espacement */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    background-color: moccasin;
+}
+/* Style de l'en-tête du tableau */
+.table thead th {
+    background-color: burlywood; /* Marron foncé */
+    color: white; /* Texte blanc pour le contraste */
+}
 
 
-    .table tbody tr:hover {
-        background-color: #495057 !important; /* Effet survol */
-    }
+/* Conteneur du tableau avec défilement sur petit écran */
+.table-responsive {
+    max-width: 100%;
+    overflow-x: auto; /* Permet le défilement sur petit écran */
+}
 
-    .btn i {
-        font-size: 1.2rem; /* Agrandir les icônes */
-    }
 
-    .btn {
-        margin-right: 5px; /* Espacement entre les boutons */
-    }
 </style>
-
+<h1>LISTE DES PERSONNES</h1>
 <div class="container mt-5">
     <div class="row mb-4">
-        <div class="col text-center">
-            <h2>Liste des Personnes</h2>
-            <button type="button" class="btn btn-primary mb-3" onclick="location.href='ajouter_personne.php'">Ajouter une personne</button>
-        </div>
-    </div>
+        
+    <div class="btn-container">
+    <button class="btn-add" onclick="location.href='ajouter_personne.php'">
+        Ajouter une personne
+    </button>
+</div>
+
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered text-center align-middle">

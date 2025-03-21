@@ -21,10 +21,15 @@ error_reporting(E_ALL);
     }
 
     .table th, .table td {
-        background-color: wheat;
+        background-color: white;
         color: black; /* Texte blanc */
         font-weight: bold;
     }
+
+.table thead th {
+    background-color: burlywood; /* Marron foncé */
+    color: white; /* Texte blanc pour le contraste */
+}
 
     .table tbody tr:hover {
         background-color: #495057 !important; /* Effet survol */
