@@ -19,11 +19,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['personne_id']) && isse
 
     // Insérer les données dans la table `developper`
     foreach ($applications as $app_id) {
-        $sql = "INSERT INTO developper (idpers, idapp) VALUES (:idpers, :idapp)";
-        $stmt = $mysql->prepare($sql);
-        $stmt->bindParam(':idpers', $personne_id);
-        $stmt->bindParam(':idapp', $app_id);
-        $stmt->execute();
+        // Vérification si l'entrée existe déjà
+        $checkSql = "SELECT COUNT(*) FROM developper WHERE idpers = :idpers AND idapp = :idapp";
+        $checkStmt = $mysql->prepare($checkSql);
+        $checkStmt->bindParam(':idpers', $personne_id);
+        $checkStmt->bindParam(':idapp', $app_id);
+        $checkStmt->execute();
+        
+        if ($checkStmt->fetchColumn() == 0) { // Si aucune entrée n'existe, insérer
+            $sql = "INSERT INTO developper (idpers, idapp) VALUES (:idpers, :idapp)";
+            $stmt = $mysql->prepare($sql);
+            $stmt->bindParam(':idpers', $personne_id);
+            $stmt->bindParam(':idapp', $app_id);
+            $stmt->execute();
+        }
     }
 
     // Récupérer le nom de la personne
@@ -48,8 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['personne_id']) && isse
     $stmt->execute();
     $selected_apps = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-    $message = "La selection  a été effectuée avec succès.";
+    $message = "La sélection a été effectuée avec succès.";
 }
+
 ?>
 
 <div class="row">

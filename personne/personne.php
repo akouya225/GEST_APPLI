@@ -37,7 +37,7 @@ error_reporting(E_ALL);
 }
 
 .table th, .table td {
-    padding: 5px; /* Ajustement de l'espacement */
+    padding: 0px; /* Ajustement de l'espacement */
     white-space: nowrap; /* Empêche le retour à la ligne */
     background-color: moccasin;
 }

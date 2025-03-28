@@ -1,11 +1,11 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link" href="index.php">
+      <a class="nav-link" href="/gest_app/index.php">
         <i class="icon-grid menu-icon"></i>
         <span class="menu-title">Accueil</span>
       </a>
-    </li>
+      
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="icon-layout menu-icon"></i>
@@ -14,7 +14,7 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="personne/personne.php">Liste personne</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/personne/personne.php">Liste personne</a></li>
           
         </ul>
       </div>
@@ -27,7 +27,7 @@
       </a>
       <div class="collapse" id="form-elements">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="application/application.php">Liste des Application</a></li>
+          <li class="nav-item"><a class="nav-link" href="/gest_app/application/application.php">Liste des Application</a></li>
           
         </ul>
       </div>
@@ -43,10 +43,10 @@
       </a>
       <div class="collapse" id="charts">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="architecture/architecture.php"> Architectures</a></li>
-          <li class="nav-item"> <a class="nav-link" href="niveau_couche/niveau_couche.php"> Niveau_couche</a></li>
-          <li class="nav-item"> <a class="nav-link" href="mode_deploiement/mode_deploiement.php">Mode_deploiement</a></li>
-          <li class="nav-item"> <a class="nav-link" href="type_personne/typepersonne.php">Type_personne</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/architecture/architecture.php"> Architectures</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/niveau_couche/niveau_couche.php"> Niveau_couche</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/mode_deploiement/mode_deploiement.php">Mode_deploiement</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/type_personne/typepersonne.php">Type_personne</a></li>
         </ul>
       </div>
     </li>
@@ -59,9 +59,9 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="rechecherperapp/personneappli.php"> enregistrer des personnes</a></li>
-          <li class="nav-item"> <a class="nav-link" href="rechecherperapp/voir.php"> Rechercher des personnes</a></li>
-          <li class="nav-item"> <a class="nav-link" href="rechecherperapp/voirperapp.php"> Affichage des personnes et application</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/rechecherperapp/personneappli.php"> enregistrer des personnes</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/rechecherperapp/voir.php"> Rechercher des personnes</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/gest_app/rechecherperapp/voirperapp.php"> Affichage des personnes et application</a></li>
         </ul>
         </div>
     </li>
