@@ -39,11 +39,13 @@ error_reporting(E_ALL);
     padding: 0px; /* Ajustement de l'espacement */
     white-space: nowrap; /* Empêche le retour à la ligne */
     background-color: moccasin;
+    text-align: left; /* Alignement du texte à gauche */
 }
 /* Style de l'en-tête du tableau */
 .table thead th {
     background-color: burlywood; /* Marron foncé */
     color: white; /* Texte blanc pour le contraste */
+    text-align: left; /* Alignement du texte à gauche */
 }
 
 

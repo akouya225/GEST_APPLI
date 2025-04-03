@@ -26,8 +26,6 @@ error_reporting(E_ALL);
     font-weight: bold;
 }
 
-
-
 /* Style du tableau */
 .table-container {
     overflow-x: auto; /* Permet le défilement horizontal */
@@ -43,13 +41,13 @@ error_reporting(E_ALL);
     padding: 5px;
     white-space: nowrap; /* Empêche le retour à la ligne */
     border: 1px solid #ddd;
-    text-align: center;
-    
+    text-align: left; /* Alignement du texte à gauche */
 }
 
 .table-list th {
     background-color: gray; /* Fond bleu */
     color: black;
+    text-align: left; /* Alignement du texte à gauche */
 }
 
 /* Style des icônes d'action */
@@ -70,7 +68,7 @@ error_reporting(E_ALL);
 
         <!-- Tableau des applications -->
         <div class="table-container">
-            <table class="table-list table-striped table-bordered table-sm text-center">
+            <table class="table-list table-striped table-bordered table-sm">
                 <thead class="thead-light">
                     <tr>
                         <th>ID</th>

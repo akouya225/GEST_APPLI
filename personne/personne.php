@@ -47,15 +47,18 @@ error_reporting(E_ALL);
     color: white; /* Texte blanc pour le contraste */
 }
 
-
 /* Conteneur du tableau avec défilement sur petit écran */
 .table-responsive {
     max-width: 100%;
     overflow-x: auto; /* Permet le défilement sur petit écran */
 }
 
-
+/* Réduction de la taille des icônes */
+.btn-sm i {
+    font-size: 10px; /* Taille encore plus réduite des icônes */
+}
 </style>
+
 <h1>LISTE DES PERSONNES</h1>
 <div class="container mt-5">
     <div class="row mb-4">
@@ -65,7 +68,6 @@ error_reporting(E_ALL);
         Ajouter une personne
     </button>
 </div>
-
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered text-center align-middle">
@@ -97,19 +99,19 @@ error_reporting(E_ALL);
                             <td>
                                 <a href='listpersonne.php?id=" . htmlspecialchars($personne['id']) . "' 
                                    class='btn btn-outline-primary btn-sm' title='Ajouter une application'>
-                                   <i class='fas fa-plus'></i></a>
+                                   <i class='fas fa-plus fa-xs'></i></a>
 
                                 <a href='details_personne.php?id=" . htmlspecialchars($personne['id']) . "' 
                                    class='btn btn-outline-info btn-sm' title='Voir les informations'>
-                                   <i class='fas fa-eye'></i></a>
+                                   <i class='fas fa-eye fa-xs'></i></a>
 
                                 <a href='modifier_personne.php?id=" . htmlspecialchars($personne['id']) . "' 
                                    class='btn btn-outline-warning btn-sm' title='Modifier'>
-                                   <i class='fas fa-edit'></i></a>
+                                   <i class='fas fa-edit fa-xs'></i></a>
 
                                 <a href='supprimer_personne.php?id=" . htmlspecialchars($personne['id']) . "' 
                                    class='btn btn-outline-danger btn-sm' title='Supprimer'>
-                                   <i class='fas fa-trash-alt'></i></a>
+                                   <i class='fas fa-trash-alt fa-xs'></i></a>
                             </td>
                         </tr>";
                     }
@@ -122,4 +124,4 @@ error_reporting(E_ALL);
     </div>
 </div>
 
-<?php include '../piedpage.php'; ?> 
+<?php include '../piedpage.php'; ?>

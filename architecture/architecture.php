@@ -24,11 +24,13 @@ error_reporting(E_ALL);
         background-color: white;
         color: black; /* Texte blanc */
         font-weight: bold;
+        text-align: left; /* Alignement du texte à gauche */
     }
 
 .table thead th {
     background-color: burlywood; /* Marron foncé */
     color: white; /* Texte blanc pour le contraste */
+    text-align: left; /* Alignement du texte à gauche */
 }
 
     .table tbody tr:hover {

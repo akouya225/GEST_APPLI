@@ -26,12 +26,15 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
     white-space: nowrap; /* Empêche le retour à la ligne */
     border: 1px solid #ddd;
     text-align: center;
+    text-align: left; /* Alignement du texte à gauche */
     
     }
 
 .table thead th {
     background-color: burlywood; /* Marron foncé */
     color: black; /* Texte blanc pour le contraste */
+    text-align: left; /* Alignement du texte à gauche */
+    
 }
 
     .table tbody tr:hover {
