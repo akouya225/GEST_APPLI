@@ -7,56 +7,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-<style>
-   /* Conteneur du bouton aligné à droite */
-.btn-container {
-    display: flex;
-    justify-content: flex-end; /* Aligner le bouton à droite */
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-/* Style du bouton */
-.btn-add {
-    background-color: bisque; 
-    color: grey;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-}
-/* Style du tableau */
-.table {
-    font-size: 10px; /* Réduction de la taille du texte */
-    background-color: beige;
-    width: 100%; /* Ajuster la largeur */
-}
-
-.table th, .table td {
-    padding: 0px; /* Ajustement de l'espacement */
-    white-space: nowrap; /* Empêche le retour à la ligne */
-    background-color: moccasin;
-    text-align: left; /* Alignement du texte à gauche */
-}
-/* Style de l'en-tête du tableau */
-.table thead th {
-    background-color: burlywood; /* Marron foncé */
-    color: white; /* Texte blanc pour le contraste */
-    text-align: left; /* Alignement du texte à gauche */
-}
-
-
-/* Conteneur du tableau avec défilement sur petit écran */
-.table-responsive {
-    max-width: 100%;
-    overflow-x: auto; /* Permet le défilement sur petit écran */
-}
-
-
-</style>
 
 <div class="row">
     <div class="col-md-12 grid-margin">

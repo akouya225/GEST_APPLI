@@ -8,55 +8,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
-<style>
-    /* Aligner le bouton à droite */
-.btn-container {
-    display: flex;
-    justify-content: flex-end; /* Aligner à droite */
-    margin-bottom: 10px;
-}
-
-/* Style du bouton */
-.btn-add {
-    background-color: bisque; /* Couleur du bouton */
-    color: grey;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-/* Style du tableau */
-.table-container {
-    overflow-x: auto; /* Permet le défilement horizontal */
-}
-
-.table-list {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table-list th, .table-list td {
-    font-size: 15px; /* Réduction de la taille du texte */
-    padding: 5px;
-    white-space: nowrap; /* Empêche le retour à la ligne */
-    border: 1px solid #ddd;
-    text-align: left; /* Alignement du texte à gauche */
-}
-
-.table-list th {
-    background-color: gray; /* Fond bleu */
-    color: black;
-    text-align: left; /* Alignement du texte à gauche */
-}
-
-/* Style des icônes d'action */
-.action-buttons a {
-    margin: 0 5px;
-    font-size: 16px;
-}
-
-</style>
 <h1>LISTE DES APPLICATIONS</h1>
 <div class="row">
     <div class="col-md-12 grid-margin">

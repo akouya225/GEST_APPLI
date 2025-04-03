@@ -22,6 +22,8 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/style-additionnel.css">
+
+    <link rel="stylesheet" href="../assets/css/final.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../assets/images/favicon.png" />
 

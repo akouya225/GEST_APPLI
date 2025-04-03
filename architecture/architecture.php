@@ -13,36 +13,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-<style>
-    /* Styles personnalisés */
-    
-    .table {
-        background-color: beige; /* Couleur d'arrière-plan beige */
-    }
+<link rel="stylesheet" href="../css/final.css?v=1.0">
 
-    .table th, .table td {
-        background-color: white;
-        color: black; /* Texte blanc */
-        font-weight: bold;
-        text-align: left; /* Alignement du texte à gauche */
-    }
-
-.table thead th {
-    background-color: burlywood; /* Marron foncé */
-    color: white; /* Texte blanc pour le contraste */
-    text-align: left; /* Alignement du texte à gauche */
-}
-
-    .table tbody tr:hover {
-        background-color: #495057 !important; /* Effet survol */
-    }
-
-    .btn i {
-        font-size: 1.2rem; /* Agrandir les icônes */
-    }
-
-    
-</style>
 
 <div class="row">
     <div class="col-md-12 grid-margin">

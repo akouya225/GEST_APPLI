@@ -6,58 +6,11 @@ require_once '../paramettre/bd.php'; // Inclure la connexion à la base de donn�
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 ?>
 
-<style>
-   /* Conteneur du bouton aligné à droite */
-.btn-container {
-    display: flex;
-    justify-content: flex-end; /* Aligner le bouton à droite */
-    margin-bottom: 10px;
-    width: 100%;
-}
 
-/* Style du bouton */
-.btn-add {
-    background-color: bisque; 
-    color: grey;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-}
-/* Style du tableau */
-.table {
-    font-size: 10px; /* Réduction de la taille du texte */
-    background-color: beige;
-    width: 100%; /* Ajuster la largeur */
-}
 
-.table th, .table td {
-    padding: 0px; /* Ajustement de l'espacement */
-    white-space: nowrap; /* Empêche le retour à la ligne */
-    background-color: moccasin;
-}
-/* Style de l'en-tête du tableau */
-.table thead th {
-    background-color: burlywood; /* Marron foncé */
-    color: white; /* Texte blanc pour le contraste */
-}
-
-/* Conteneur du tableau avec défilement sur petit écran */
-.table-responsive {
-    max-width: 100%;
-    overflow-x: auto; /* Permet le défilement sur petit écran */
-}
-
-/* Réduction de la taille des icônes */
-.btn-sm i {
-    font-size: 10px; /* Taille encore plus réduite des icônes */
-}
-</style>
 
 <h1>LISTE DES PERSONNES</h1>
 <div class="container mt-5">
@@ -98,19 +51,19 @@ error_reporting(E_ALL);
                             <td>" . htmlspecialchars($personne['telephone']) . "</td>
                             <td>
                                 <a href='listpersonne.php?id=" . htmlspecialchars($personne['id']) . "' 
-                                   class='btn btn-outline-primary btn-sm' title='Ajouter une application'>
-                                   <i class='fas fa-plus fa-xs'></i></a>
+                                   class='btn btn-outline-primary btn-sm px-2 py-1 ' title='Ajouter une application'>
+                                   <i class='fas fa-plus fa-xs '></i></a>
 
                                 <a href='details_personne.php?id=" . htmlspecialchars($personne['id']) . "' 
-                                   class='btn btn-outline-info btn-sm' title='Voir les informations'>
+                                   class='btn btn-outline-info btn-sm  px-2 py-1 ' title='Voir les informations'>
                                    <i class='fas fa-eye fa-xs'></i></a>
 
                                 <a href='modifier_personne.php?id=" . htmlspecialchars($personne['id']) . "' 
-                                   class='btn btn-outline-warning btn-sm' title='Modifier'>
+                                   class='btn btn-outline-warning btn-sm px-2 py-1 ' title='Modifier'>
                                    <i class='fas fa-edit fa-xs'></i></a>
 
                                 <a href='supprimer_personne.php?id=" . htmlspecialchars($personne['id']) . "' 
-                                   class='btn btn-outline-danger btn-sm' title='Supprimer'>
+                                   class='btn btn-outline-danger btn-sm px-2 py-1 ' title='Supprimer'>
                                    <i class='fas fa-trash-alt fa-xs'></i></a>
                             </td>
                         </tr>";

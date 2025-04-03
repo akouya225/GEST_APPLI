@@ -1,0 +1,130 @@
+
+
+
+/* Conteneur du bouton aligné à droite */
+.btn-container {
+    display: flex;
+    justify-content: flex-end; /* Aligner le bouton à droite */
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Style du bouton */
+.btn-add {
+    background-color: bisque;
+    color: grey;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Style du tableau */
+.table {
+    font-size: 10px; /* Réduction de la taille du texte */
+    background-color: beige;
+    width: 100%; /* Ajuster la largeur */
+}
+
+.table th, .table td {
+    padding: 3px; /* Ajustement de l'espacement */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    text-align: left; /* Alignement du texte à gauche */
+}
+
+/* Style de l'en-tête du tableau */
+.table thead th {
+    background-color: burlywood; /* Marron foncé */
+    color: white; /* Texte blanc pour le contraste */
+}
+
+/* Conteneur du tableau avec défilement sur petit écran */
+.table-responsive {
+    max-width: 100%;
+    overflow-x: auto; /* Permet le défilement sur petit écran */
+}
+
+/* Réduction de la taille des icônes */
+.btn-sm i {
+    font-size: 10px; /* Taille encore plus réduite des icônes */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Conteneur du bouton aligné à droite */
+.btn-container {
+    display: flex;
+    justify-content: flex-end; /* Aligner le bouton à droite */
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Style du bouton */
+.btn-add {
+    background-color: bisque;
+    color: grey;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Conteneur du tableau avec défilement horizontal */
+.table-container {
+    overflow-x: auto; /* Permet le défilement horizontal */
+}
+
+/* Style du tableau */
+.table-list {
+    width: 100%;
+    border-collapse: collapse; /* Fusionne les bordures */
+}
+
+.table-list th, .table-list td {
+    font-size: 15px; /* Augmentation de la taille du texte */
+    padding: 5px; /* Augmentation de l'espacement */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    border: 1px solid #ddd; /* Bordure des cellules */
+    text-align: left; /* Alignement du texte à gauche */
+}
+
+/* Style de l'en-tête du tableau */
+.table-list th {
+    background-color: gray; /* Couleur de fond pour les en-têtes */
+    color: black; /* Couleur du texte pour les en-têtes */
+}
+
+/* Conteneur du tableau avec défilement sur petit écran */
+.table-responsive {
+    max-width: 100%;
+    overflow-x: auto; /* Permet le défilement sur petit écran */
+}
+
+/* Style des icônes d'action */
+.action-buttons a {
+    margin: 0 5px; /* Espacement autour des icônes */
+    font-size: 16px; /* Augmentation de la taille des icônes */
+}
+
+/* Réduction de la taille des icônes */
+.btn-sm i {
+    font-size: 10px; /* Taille encore plus réduite des icônes */
+}
+
+
+

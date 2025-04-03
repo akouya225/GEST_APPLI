@@ -39,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+<link rel="stylesheet" href="../css/app.css?v=1.0">
 
 <div class="row">
         <h2>Ajouter une Application</h2>
