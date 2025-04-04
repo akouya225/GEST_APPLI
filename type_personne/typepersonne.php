@@ -13,14 +13,15 @@ $sql = "SELECT id, libelle, description FROM type_personne";
 $stmt = $mysql->query($sql);
 $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<h1 class="fs-5">La liste des types de personnet</h1>
 
 
-<div class="row">
+<div class="card mt-3">
+    <div class="card-body">
     <div class="col-md-12 grid-margin">
     <!--DEBUT DE MON CODE -->
 
     <div class="container mt-4">
-        <h1 class="mb-4 text-center">La liste des types de personne</h1>
         
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] == 'true') : ?>
             <div class="alert alert-success" role="alert">
@@ -32,10 +33,10 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <table class="table table-striped table-bordered table-sm text-center">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
-                        <th>Libellé</th>
-                        <th>Description</th>
-                        <th>Action</th>
+                        <th class="p-2 bg-table-thead">ID</th>
+                        <th class="p-2 bg-table-thead">Libellé</th>
+                        <th class="p-2 bg-table-thead">Description</th>
+                        <th class="p-2 bg-table-thead">Action</th>
                     </tr>
                 </thead>
                 <tbody>

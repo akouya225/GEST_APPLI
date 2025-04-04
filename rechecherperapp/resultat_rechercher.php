@@ -40,31 +40,31 @@ $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); }
 
 
 ?>
-
-<div class="row">
-    <div class="col-md-12 grid-margin">
+<h1 class="fs-5">Résultats dela Recherche</h1>
+ 
+<div class="card mt-3">
+    <div class="card-body">
     <!--DEBUT DE MON CODE -->
 
-    <h1 class="mb-4 text-center">Résultats de la Recherche</h1>
         <?php if (!empty($results)) : ?>
             <table class="table table-striped table-bordered table-hover text-center">
                 <thead class="thead-light">
                     <tr>
-                        <th class="py-2">Nom</th>
-                        <th class="py-2">Prénom</th>
-                        <th class="py-2">Email</th>
-                        <th class="py-2">Telephone</th>
-                        <th class="py-2">Application</th>
-                        <th class="py-2">Description</th>
-                        <th class="py-2">Architecture</th>
-                        <th class="py-2">Niveau_couche</th>
-                        <th class="py-2">Mode_deploiement</th>
+                        <th class="p-2 bg-table-thead">Nom</th>
+                        <th class="p-2 bg-table-thead">Prénom</th>
+                        <th class="p-2 bg-table-thead">Email</th>
+                        <th class="p-2 bg-table-thead">Telephone</th>
+                        <th class="p-2 bg-table-thead">Application</th>
+                        <th class="p-2 bg-table-thead">Description</th>
+                        <th class="p-2 bg-table-thead">Architecture</th>
+                        <th class="p-2 bg-table-thead">Niveau_couche</th>
+                        <th class="p-2 bg-table-thead">Mode_deploiement</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($results as $row) : ?>
                         <tr>
-                            <td><?= htmlspecialchars($row['Nom']) ?></td>
+                            <td class='p-3'><?= htmlspecialchars($row['Nom']) ?></td>
                             <td><?= htmlspecialchars($row['Prenom']) ?></td>
                             <td><?= htmlspecialchars($row['Email']) ?></td>
                             <td><?= htmlspecialchars($row['Telephone']) ?></td>

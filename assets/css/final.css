@@ -36,10 +36,7 @@
 }
 
 /* Style de l'en-tête du tableau */
-.table thead th {
-    background-color: burlywood; /* Marron foncé */
-    color: white; /* Texte blanc pour le contraste */
-}
+
 
 /* Conteneur du tableau avec défilement sur petit écran */
 .table-responsive {
@@ -52,6 +49,25 @@
     font-size: 10px; /* Taille encore plus réduite des icônes */
 }
 
+
+:root{
+    --color-green:#008000 ;
+    --color-white:#fff ;
+}
+
+
+
+/* MON STYLE CSS*/
+.bg-table-thead{
+    background-color: var(--color-green) !important;
+    color:var(--color-white) !important;
+}
+
+
+table td .btn{
+    border-radius: 5px !important;
+    margin-left: 5px !important;
+}
 
 
 

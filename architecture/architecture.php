@@ -15,17 +15,17 @@ error_reporting(E_ALL);
 ?>
 <link rel="stylesheet" href="../css/final.css?v=1.0">
 
-
-<div class="row">
-    <div class="col-md-12 grid-margin">
+<h1 class="fs-5">Liste des architectures</h1>
+<div class="card mt-3">
+    <div class="card-body">
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-sm text-center">
                 <thead class="thead-light">
                     <tr>
-                        <th>ID</th>
-                        <th>Libelle</th>
-                        <th>Description</th>
-                        <th>Action</th>
+                        <th class="p-2 bg-table-thead">ID</th>
+                        <th class="p-2 bg-table-thead">Libelle</th>
+                        <th class="p-2 bg-table-thead">Description</th>
+                        <th class="p-2 bg-table-thead">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,11 +36,11 @@ error_reporting(E_ALL);
                             <td><?= htmlspecialchars($architecture['description']) ?></td>
                             <td>
                                 <a href="modificationarch.php?id=<?= htmlspecialchars($architecture['id']) ?>"
-                                    class="btn btn-sm text-success" title="Modifier les informations"><i
-                                        class="fas fa-edit"></i></a>
+                                class='btn btn-outline-warning btn-sm px-2 py-1 ' title="Modifier les informations"><i
+                                <i class='fas fa-edit fa-xs'></i></a>
                                 <a href="supprimerarch.php?id=<?= htmlspecialchars($architecture['id']) ?>"
-                                    class="btn btn-sm text-danger" title="Supprimer les informations"><i
-                                        class="fas fa-trash-alt"></i></a>
+                                    class='btn btn-outline-danger btn-sm px-2 py-1 ' title="Supprimer les informations"><i
+                                    <i class='fas fa-trash-alt fa-xs'></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

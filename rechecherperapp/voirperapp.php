@@ -34,31 +34,31 @@ $stmt = $mysql->query($sql);
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
-<div class="row">
+<h1 class="fs-5">Liste des Personnes et Applications</h1>
+<div class="card mt-3">
     <div class="col-md-12 grid-margin">
     <!--DEBUT DE MON CODE -->
 
-         <div class="container mt-4">
-        <h1 class="mb-4">Liste des Personnes et Applications</h1>
+             <div class="card-body">
+         
         <?php if (count($data) > 0) : ?>
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Telephone</th>
-                        <th>Application</th>
-                        <th>Architecture</th>
-                        <th>Niveau de Couche</th>
-                        <th>Mode de Déploiement</th>
+                        <th class="p-2 bg-table-thead">Nom</th>
+                        <th class="p-2 bg-table-thead">Prénom</th>
+                        <th class="p-2 bg-table-thead">Email</th>
+                        <th class="p-2 bg-table-thead">Telephone</th>
+                        <th class="p-2 bg-table-thead">Application</th>
+                        <th class="p-2 bg-table-thead">Architecture</th>
+                        <th class="p-2 bg-table-thead">Niveau de Couche</th>
+                        <th class="p-2 bg-table-thead">Mode de Déploiement</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($data as $row) : ?>
                         <tr>
-                            <td><?= htmlspecialchars($row['nom_personne']) ?></td>
+                            <td class='p-3'><?= htmlspecialchars($row['nom_personne']) ?></td>
                             <td><?= htmlspecialchars($row['prenom_personne']) ?></td>
                             <td><?= htmlspecialchars($row['email_personne']) ?></td>
                             <td><?= htmlspecialchars($row['telephone_personne']) ?></td>

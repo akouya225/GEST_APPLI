@@ -14,10 +14,10 @@ $stmt = $mysql->query($sql);
 $niveaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<h1 class="fs-5">Liste des Niveaux de Couche</h1>
 
-<div class="container mt-5">
-    <h1 class="mb-4 text-center">Liste des Niveaux de Couche</h1>
-
+<div class="card mt-3">
+<div class="card-body">
     <?php if (isset($_GET['deleted']) && $_GET['deleted'] == 'true') : ?>
         <div class="alert alert-success" role="alert">
             Suppression réussie !
@@ -28,10 +28,10 @@ $niveaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table class="table table-striped table-bordered table-hover text-center">
             <thead class="thead-light">
                 <tr>
-                    <th>ID</th>
-                    <th>Libelle</th>
-                    <th>Description</th>
-                    <th>Action</th>
+                    <th class="p-2 bg-table-thead">ID</th>
+                    <th class="p-2 bg-table-thead">Libelle</th>
+                    <th class="p-2 bg-table-thead">Description</th>
+                    <th class="p-2 bg-table-thead">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +53,7 @@ $niveaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
     </div>
+</div>
 </div>
 
 <?php include '../piedpage.php'; ?>
