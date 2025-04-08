@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Architectures</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+<body>
+    <h2>Types d'architecture</h2>
+    <table class="table table-striped table-bordered table-sm text-center">
+        <thead class="thead-light">
+            <tr>
+                <th class="p-2 bg-table-thead">ID</th>
+                <th class="p-2 bg-table-thead">Libelle</th>
+                <th class="p-2 bg-table-thead">Action</th>
+            </tr>
+        </thead>
+        <tbody id="geo-data">
+            <!-- Données insérées ici par jQuery -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+
+
+            $.get("lien.html", function(data) {
+        $("head").append(data);
+      });
+
+
+
+            $.ajax({
+                url: "http://localhost/gest_app/api_service/architectureApi.php",
+                method: "GET",
+                dataType: "json",
+                success: function(data) {
+                    data.forEach(function(item) {
+                        
+                        $("#geo-data").append(
+                                `<tr>
+                                    <td>${ item.libelle}</td>
+                                    <td>${ item.description}</td>
+                                     <td>
+                                        <a href="modificationarch.php?id=${ item.id}"
+                                class='btn btn-outline-warning btn-sm px-2 py-1 ' title="Modifier les informations"><i
+                                <i class='fas fa-edit fa-xs'></i></a>
+                                <a href="supprimerarch.php?id=${ item.id}"
+                                    class='btn btn-outline-danger btn-sm px-2 py-1 ' title="Supprimer les informations"><i
+                                    <i class='fas fa-trash-alt fa-xs'></i></a>
+                                     </td>
+                                </tr>`
+                            );
+                    });
+                },
+                error: function() {
+                    alert("Erreur lors du chargement des données.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+

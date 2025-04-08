@@ -60,7 +60,8 @@
 <body>
     <div class="container-scroller">
         <!-- topbar -->
-        <?php include 'topbar.php'; ?>
+        <?php include 'topbar-index.php'; 
+        ?>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_sidebar.html -->

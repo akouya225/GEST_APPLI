@@ -46,8 +46,13 @@ error_reporting(E_ALL);
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
+
+<script>
+    
+</script>
 
 <?php include '../piedpage.php'; ?>
