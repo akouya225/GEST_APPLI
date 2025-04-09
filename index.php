@@ -71,7 +71,7 @@ include 'entete.php';
                     <div class="card card-light-blue">
                       <div class="card-body">
                       <button type="submit" class="right btn" onclick="location.href='architecture/architecture.php'"><p class="mb-4-white"><p class="mb-4">PARAMETRES</p></button>
-                        <p class="fs-30 mb-2">118</p>
+                        <p class="fs-30 mb-2">10</p>
 
                       </div>
                     </div>

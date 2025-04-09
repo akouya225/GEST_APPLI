@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) { $id = htmlspeci
                  
 
 ?>
-
+<h3>Modification d'une personne</h3>
 <div class="row">
     <div class="col-md-12 grid-margin">
     <!--DEBUT DE MON CODE -->

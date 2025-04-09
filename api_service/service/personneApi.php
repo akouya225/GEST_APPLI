@@ -1,7 +1,7 @@
 
 <?php
 // API JSON : pas besoin d'inclure les parties HTML
-require_once '../paramettre/bd.php'; // Connexion à la base
+require_once '../../paramettre/bd.php'; // Connexion à la base
 
 // En-tête pour indiquer un retour JSON
 header('Content-Type: application/json');
