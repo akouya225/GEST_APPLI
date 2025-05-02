@@ -13,7 +13,7 @@ $sql = "SELECT id, libelle, description FROM type_personne";
 $stmt = $mysql->query($sql);
 $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<h1 class="fs-5">La liste des types de personnet</h1>
+<h1 class="fs-5">La liste des types de personne</h1>
 
 
 <div class="card mt-3">
